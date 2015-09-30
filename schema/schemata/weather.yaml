@@ -1,0 +1,77 @@
+---
+"$schema": http://json-schema.org/draft-04/hyper-schema
+title: Weather
+description: something 
+stability: prototype
+strictProperties: true
+type:
+- object
+definitions:
+  id:
+    description: unique identifier of weather
+    readOnly: true
+    format: uuid
+    type:
+    - string
+  identity:
+    anyOf:
+    - "$ref": "/schemata/weather#/definitions/id"
+    - "$ref": "/schemata/weather#/definitions/current"
+  created_at:
+    description: when weather was created
+    format: date-time
+    type:
+    - string
+  updated_at:
+    description: when weather was updated
+    format: date-time
+    type:
+    - string
+  current:
+    description: a jsonb string of current weather
+    type:
+      - string
+links:
+- description: Create a new weather.
+  href: "/weathers"
+  method: POST
+  rel: create
+  schema:
+    properties: {}
+    type:
+    - object
+  title: Create
+- description: Delete an existing weather.
+  href: "/weathers/{(%2Fschemata%2Fweather%23%2Fdefinitions%2Fidentity)}"
+  method: DELETE
+  rel: destroy
+  title: Delete
+- description: Info for existing weather.
+  href: "/weathers/{(%2Fschemata%2Fweather%23%2Fdefinitions%2Fidentity)}"
+  method: GET
+  rel: self
+  title: Info
+- description: List existing weathers.
+  href: "/weathers"
+  method: GET
+  rel: instances
+  title: List
+- description: Update an existing weather.
+  href: "/weathers/{(%2Fschemata%2Fweather%23%2Fdefinitions%2Fidentity)}"
+  method: PATCH
+  rel: update
+  schema:
+    properties: {}
+    type:
+    - object
+  title: Update
+properties:
+  created_at:
+    "$ref": "/schemata/weather#/definitions/created_at"
+  id:
+    "$ref": "/schemata/weather#/definitions/id"
+  updated_at:
+    "$ref": "/schemata/weather#/definitions/updated_at"
+  current: 
+    "$ref": "/schemata/weather#/definitions/current" 
+id: schemata/weather
