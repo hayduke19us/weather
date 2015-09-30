@@ -2,10 +2,6 @@ module Endpoints
   # The base class for all Sinatra-based endpoints. Use sparingly.
   class Base < Sinatra::Base
 
-    def serialize data, structure = :default
-      Pliny::Serializers::Weather.new(structure).serialize(data)
-    end
-
     register Pliny::Extensions::Instruments
     register Sinatra::Namespace
 

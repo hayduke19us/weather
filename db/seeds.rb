@@ -32,8 +32,8 @@ def create_weathers
   100.times do
     count_1
     id = _DB[:weathers].insert(current: rnd_hash)
-    obj = _DB[:weathers][id: id]
-    puts print_message obj
+    # obj = _DB[:weathers][id: id]
+    # puts print_message obj
   end
 end
 

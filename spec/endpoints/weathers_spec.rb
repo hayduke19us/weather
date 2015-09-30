@@ -16,7 +16,24 @@ describe Endpoints::Weathers do
       assert_equal 201, last_response.status
       props = MultiJson.decode(Weather.last.current)
       refute props.empty?
-      puts props
+    end
+  end
+
+  describe "Get /weathers/:id" do
+    it 'succeeds' do
+      w = Weather.first.id
+      get "/weathers", id: w
+      assert_equal 200, last_response.status
+    end
+  end
+
+  describe "Patch /weathers/:id" do
+    it 'sucks' do
+      w = Weather.first
+      patch "/weathers/#{w.id}", {weather: {current: {temp: 60}.to_json}}
+      we = Weather.find id: w.id
+      assert_equal 200, last_response.status
+      assert_equal JSON.parse(we.current)['temp'], 60
     end
   end
 end

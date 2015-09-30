@@ -19,16 +19,26 @@ module Endpoints
       end
 
       get "/:id" do
-        encode Weather.find(params[:id])
+        encode serialize(Weather.find id: params[:id])
       end
 
       patch "/:id" do
-        encode Hash.new
+        w = Weather.find id: params[:id]
+        if sanitize params, 'weather'
+          status 200
+          encode serialize w.update params[:weather]
+        else
+          status 300
+        end
       end
 
       delete "/:id" do
         encode Hash.new
       end
+    end
+
+    def sanitize params, matcher
+      params[matcher] ? true : false
     end
   end
 end

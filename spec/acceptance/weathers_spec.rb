@@ -23,7 +23,7 @@ describe Endpoints::Weathers do
   describe 'POST /weathers' do
     it 'returns correct status code and conforms to schema' do
       header "Content-Type", "application/json"
-      post '/weathers', {current: {temp: 60}}
+      post '/weathers', {}
       assert_equal 201, last_response.status
       assert_schema_conform
     end
@@ -31,21 +31,23 @@ describe Endpoints::Weathers do
 
   describe 'GET /weathers/:id' do
     it 'returns correct status code and conforms to schema' do
-      get "/weathers/123"
+      id = Weather.first.id
+      get "/weathers/#{id}"
       assert_equal 200, last_response.status
       assert_schema_conform
     end
   end
 
-#  describe 'PATCH /weathers/:id' do
-#    it 'returns correct status code and conforms to schema' do
-#      header "Content-Type", "application/json"
-#      patch '/weathers/123', MultiJson.encode({})
-#      assert_equal 200, last_response.status
-#      assert_schema_conform
-#    end
-#  end
-#
+  describe 'PATCH /weathers/:id' do
+    it 'returns correct status code and conforms to schema' do
+      w = Weather.create()
+      header "Content-Type", "application/json"
+      patch "/weathers/#{w.id}", {}
+      assert_equal 300, last_response.status
+      assert_schema_conform
+    end
+  end
+
 #  describe 'DELETE /weathers/:id' do
 #    it 'returns correct status code and conforms to schema' do
 #      delete '/weathers/123'
