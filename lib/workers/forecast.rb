@@ -15,12 +15,13 @@ end
 # where you can then say
 # PlainOldRuby.perform_async "like a dog", 3
 #
-class PlainOldRuby
-  include Sidekiq::Worker
+module Worker
+  class Forecast
+    include Sidekiq::Worker
 
-  def self.perform(how_hard="super hard", how_long=1)
-    sleep how_long
-    puts "Workin' #{how_hard}"
+    def self.perform(how_hard="super hard", how_long=1)
+      sleep how_long
+      puts "Workin' #{how_hard}"
+    end
   end
 end
-
