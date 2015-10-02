@@ -42,8 +42,8 @@ describe Endpoints::Weathers do
     it 'returns correct status code and conforms to schema' do
       w = Weather.create()
       header "Content-Type", "application/json"
-      patch "/weathers/#{w.id}", {}
-      assert_equal 300, last_response.status
+      patch "/weathers/#{w.id}", '{}'
+      assert_equal 200, last_response.status
       assert_schema_conform
     end
   end

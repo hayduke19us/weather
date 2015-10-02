@@ -21,6 +21,7 @@ gem "sucker_punch"
 group :development, :test do
   gem "pry-byebug"
   gem "colorize"
+  gem "byebug"
 end
 
 group :test do

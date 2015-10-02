@@ -30,10 +30,10 @@ describe Endpoints::Weathers do
   describe "Patch /weathers/:id" do
     it 'sucks' do
       w = Weather.first
-      patch "/weathers/#{w.id}", {weather: {current: {temp: 60}.to_json}}
+      patch "/weathers/#{w.id}", current: {rain: 'light'}.to_json
       we = Weather.find id: w.id
       assert_equal 200, last_response.status
-      assert_equal JSON.parse(we.current)['temp'], 60
+      assert_equal 'light', JSON.parse(we.current)['rain']
     end
   end
 end

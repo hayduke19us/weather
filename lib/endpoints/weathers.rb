@@ -18,18 +18,15 @@ module Endpoints
         encode serialize(Weather.create(params))
       end
 
-      get "/:id" do
-        encode serialize(Weather.find id: params[:id])
+      get "/:id" do |id|
+        encode serialize(Weather.find id: id)
       end
 
-      patch "/:id" do
-        w = Weather.find id: params[:id]
-        if sanitize params, 'weather'
-          status 200
-          encode serialize w.update params[:weather]
-        else
-          status 300
-        end
+      patch "/:id" do |id|
+        status 200
+        w = Weather.find id: id
+        w.update body_params
+        encode serialize w
       end
 
       delete "/:id" do

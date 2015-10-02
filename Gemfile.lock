@@ -117,6 +117,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  byebug
   colorize
   committee
   database_cleaner
