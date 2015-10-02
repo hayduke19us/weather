@@ -1,10 +1,12 @@
+require 'sidekiq'
+require 'colorize'
+
 module Worker
   class Forecast
     include Sidekiq::Worker
 
-    def self.perform(how_hard="super hard", how_long=1)
-      sleep how_long
-      puts "Workin' #{how_hard}"
+    def self.perform()
+      puts "Workin my ass off".colorize(:green)
     end
   end
 end

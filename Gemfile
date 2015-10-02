@@ -18,6 +18,7 @@ gem "sinatra-contrib", require: ["sinatra/namespace", "sinatra/reloader"]
 gem "sinatra-router"
 gem "sucker_punch"
 gem  "sidekiq"
+gem "clockwork"
 
 
 group :development, :test do

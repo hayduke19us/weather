@@ -12,6 +12,9 @@ GEM
       columnize (= 0.9.0)
     celluloid (0.16.0)
       timers (~> 4.0.0)
+    clockwork (1.2.0)
+      activesupport
+      tzinfo
     coderay (1.1.0)
     colorize (0.7.7)
     columnize (0.9.0)
@@ -128,6 +131,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+  clockwork
   colorize
   committee
   database_cleaner
