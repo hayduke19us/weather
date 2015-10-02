@@ -19,6 +19,7 @@ GEM
       json_schema (~> 0.6, >= 0.6.1)
       multi_json (~> 1.10)
       rack (~> 1.5)
+    connection_pool (2.2.0)
     database_cleaner (1.5.0)
     diff-lcs (1.2.5)
     docile (1.1.5)
@@ -63,6 +64,9 @@ GEM
       rack (>= 1.0)
     rack-timeout (0.3.2)
     rake (10.4.2)
+    redis (3.2.1)
+    redis-namespace (1.5.2)
+      redis (~> 3.0, >= 3.0.4)
     rollbar (2.3.0)
       oj (~> 2.12.14)
     rspec (3.3.0)
@@ -84,6 +88,12 @@ GEM
     sequel_pg (1.6.13)
       pg (>= 0.8.0)
       sequel (>= 3.39.0)
+    sidekiq (3.4.2)
+      celluloid (~> 0.16.0)
+      connection_pool (~> 2.2, >= 2.2.0)
+      json (~> 1.0)
+      redis (~> 3.2, >= 3.2.1)
+      redis-namespace (~> 1.5, >= 1.5.2)
     simplecov (0.10.0)
       docile (~> 1.1.0)
       json (~> 1.8)
@@ -137,6 +147,7 @@ DEPENDENCIES
   sequel (~> 4.16)
   sequel-paranoid
   sequel_pg (~> 1.6)
+  sidekiq
   simplecov
   sinatra (~> 1.4)
   sinatra-contrib
