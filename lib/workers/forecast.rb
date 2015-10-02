@@ -5,8 +5,9 @@ module Worker
   class Forecast
     include Sidekiq::Worker
 
-    def self.perform()
-      puts "Workin my ass off".colorize(:green)
+    def self.perform
+      response = "{status: 'success'}"
+      puts response.colorize(:green)
     end
   end
 end

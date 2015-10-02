@@ -1,6 +1,7 @@
 require 'clockwork'
 require_relative 'forecast'
 
+# TODO maybe make a folder with jobs in it
 module Clockwork
   handler do |job, time|
     if job.eql?('frequent.forecast')
