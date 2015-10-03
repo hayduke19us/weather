@@ -16,6 +16,7 @@ module Config
   optional :placeholder,         string
   optional :versioning_default,  string
   optional :versioning_app_name, string
+  optional :forcast, string
 
   # Override -- value is returned or the set default.
   override :db_pool,          5,    int

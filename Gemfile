@@ -19,12 +19,14 @@ gem "sinatra-router"
 gem "sucker_punch"
 gem  "sidekiq"
 gem "clockwork"
+gem "rest-client"
 
 
 group :development, :test do
   gem "pry-byebug"
   gem "colorize"
   gem "byebug"
+  gem "webmock"
 end
 
 group :test do
