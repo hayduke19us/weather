@@ -8,4 +8,4 @@ describe Worker::Forecast do
     end
   end
 end
-  
+

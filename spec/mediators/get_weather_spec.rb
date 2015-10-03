@@ -7,8 +7,7 @@ describe Mediators::GetWeather do
     stub_request(:get, "#{weather.request_url}").
       to_return body: File.open('./spec/weather.json', 'r').read
 
-    weather.request
-    response = JSON.parse weather.response
+    response = JSON.parse(weather.call)
     latlong = [response["latitude"], response["longitude"]]
     assert_equal latlong, weather.latlong
   end
