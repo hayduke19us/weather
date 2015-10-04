@@ -15,7 +15,7 @@ class Mediators::GetWeather < Mediators::Base
   end
 
   def request
-    self.response = RestClient.get request_url
+    self.response = ::RestClient.get request_url
   end
 
   def response

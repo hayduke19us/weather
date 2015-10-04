@@ -11,12 +11,12 @@ module Config
 
   # Mandatory -- exception is raised for these variables when missing.
   mandatory :database_url, string
+  mandatory :forecast, string
 
   # Optional -- value is returned or `nil` if it wasn't present.
   optional :placeholder,         string
   optional :versioning_default,  string
   optional :versioning_app_name, string
-  optional :forcast, string
 
   # Override -- value is returned or the set default.
   override :db_pool,          5,    int

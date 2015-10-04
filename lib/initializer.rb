@@ -16,6 +16,8 @@ module Initializer
       lib/endpoints/**/*
       lib/mediators/base
       lib/mediators/**/*
+      lib/workers/base
+      lib/workers/**/*
       lib/routes
       lib/serializers/base
       lib/serializers/**/*
@@ -30,6 +32,19 @@ module Initializer
 
   def self.require_initializers
     Pliny::Utils.require_glob("#{Config.root}/config/initializers/*.rb")
+  end
+
+  # TODO parse all of lib requires
+  def self.require_mediators
+    require! %w(
+      lib/mediators/**/*
+    )
+  end
+
+  def self.require_workers
+    require! %w(
+      lib/workers/**/*
+    )
   end
 
   def self.require!(globs)

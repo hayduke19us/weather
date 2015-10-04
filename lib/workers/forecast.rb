@@ -6,8 +6,19 @@ module Worker
     include Sidekiq::Worker
 
     def self.perform
-      response = "{status: 'success'}"
-      puts response.colorize(:green)
+      weather = Mediators::CreateWeather.call
+      if weather
+        human_time = Proc.new {|time| time.strftime("%a, %b, %d, %Y %H:%M %p")} 
+        msg = %[
+                   Weather record #{weather.id} \n 
+                   created on #{human_time.call(weather.created_at)}
+                ]
+
+        puts msg.colorize(:green)
+      else
+        msg = "There was an error requesting weather from forecast".colorize(:red)
+        puts msg.colorize(:red)
+      end
     end
   end
 end
