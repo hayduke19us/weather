@@ -8,6 +8,8 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.3.8)
+    assert_difference (1.0.0)
+      activesupport (>= 3.0.0)
     backports (3.6.6)
     byebug (5.0.0)
       columnize (= 0.9.0)
@@ -150,6 +152,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  assert_difference
   byebug
   clockwork
   colorize

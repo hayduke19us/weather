@@ -7,13 +7,19 @@ module Workers
 
     def self.perform
       weather = Mediators::CreateWeather.call
+
       if weather
         msg = "Weather record #{weather.id} created at #{weather.created_at}"
-        puts msg.colorize(:green)
+        print_message msg.colorize(:green)
       else
-        msg = "There was an error requesting weather from forecast".colorize(:red)
-        puts msg.colorize(:red)
+        msg = "There was an error requesting weather from forecast"
+        print_message msg.colorize(:red)
       end
+
+    end
+
+    def self.print_message msg
+      puts msg
     end
   end
 end

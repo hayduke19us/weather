@@ -36,4 +36,5 @@ group :test do
   gem "dotenv"
   gem "rack-test"
   gem "rspec"
+  gem "assert_difference"
 end

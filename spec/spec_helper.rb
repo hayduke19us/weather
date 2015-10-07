@@ -42,6 +42,7 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :transaction
   end
 
+
   config.before :all do
     load('db/seeds.rb') if File.exist?('db/seeds.rb')
   end
@@ -54,6 +55,7 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
+  config.include AssertDifference
   config.expect_with :minitest
   config.run_all_when_everything_filtered = true
   config.filter_run :focus
