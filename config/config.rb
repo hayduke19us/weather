@@ -9,13 +9,16 @@ require "pliny/config_helpers"
 module Config
   extend Pliny::CastingConfigHelpers
 
+
   # Mandatory -- exception is raised for these variables when missing.
   mandatory :database_url, string
+  mandatory :forecast, string
 
   # Optional -- value is returned or `nil` if it wasn't present.
   optional :placeholder,         string
   optional :versioning_default,  string
   optional :versioning_app_name, string
+  optional :redis_provider
 
   # Override -- value is returned or the set default.
   override :db_pool,          5,    int
@@ -34,4 +37,5 @@ module Config
   override :versioning,       false, bool
   override :pretty_json,      false, bool
   override :database_url,     ENV['DATABASE_URL'], string
+  override :redis_provider,   'redis::localhost//6379', string
 end
