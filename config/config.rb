@@ -18,6 +18,7 @@ module Config
   optional :placeholder,         string
   optional :versioning_default,  string
   optional :versioning_app_name, string
+  optional :redis_provider
 
   # Override -- value is returned or the set default.
   override :db_pool,          5,    int
@@ -35,4 +36,5 @@ module Config
   override :force_ssl,        true,  bool
   override :versioning,       false, bool
   override :pretty_json,      false, bool
+  override :redis_provider,   'redis::localhost//6379', string
 end
