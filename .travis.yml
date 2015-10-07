@@ -1,0 +1,18 @@
+language: ruby
+
+rvm:
+  - 2.2.3
+
+# Required to use Travis containerization
+sudo: false
+
+addons:
+  postgresql: "9.4"
+
+before_script:
+  - bundle exec rake db:create db:migrate
+
+script:
+  - bundle exec rake
+
+cache: bundler
