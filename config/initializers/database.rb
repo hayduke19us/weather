@@ -5,6 +5,6 @@ database_setup_proc = lambda do |conn|
   conn.execute "SET application_name = '#{process_identifier}'"
 end
 
-Sequel.connect(Config.database_url,
+Sequel.connect(ENV[DATABASE_URL] || Config.database_url,
   max_connections: Config.db_pool,
   after_connect: database_setup_proc)
