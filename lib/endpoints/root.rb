@@ -1,7 +1,7 @@
 module Endpoints
   class Root < Base
     get "/" do
-      "hello."
+      haml :index, locals: {weathers: Weather.all}
     end
   end
 end

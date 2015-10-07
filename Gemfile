@@ -21,6 +21,7 @@ gem "sidekiq"
 gem "clockwork"
 gem "rest-client"
 gem "colorize"
+gem "haml"
 
 group :development, :test do
   gem "pry-byebug"

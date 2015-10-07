@@ -1,0 +1,8 @@
+%html(xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en")
+  %body
+    .content
+      %h1 Hello this is a light Pliny app
+      %h2 Weather records: #{weathers.count}
+      %ul
+        - weathers.each do |w|
+          %li=w.created_at

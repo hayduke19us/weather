@@ -35,6 +35,8 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.0.2)
     erubis (2.7.0)
+    haml (4.0.7)
+      tilt
     hitimes (1.2.3)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
@@ -159,6 +161,7 @@ DEPENDENCIES
   committee
   database_cleaner
   dotenv
+  haml
   multi_json
   oj
   pg
