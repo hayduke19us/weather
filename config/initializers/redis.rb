@@ -1,3 +1,5 @@
+require 'colorize'
+
 # Starts redis if it is not running
 begin
 

@@ -1,4 +1,5 @@
 require 'sidekiq'
+require 'colorize'
 
 module Workers
   class Forecast
