@@ -5,4 +5,4 @@
       %h2 Weather records: #{weathers.count}
       %ul
         - weathers.each do |w|
-          %li=@tz.utc_to_local(w.created_at.utc)
+          %li=@tz.utc_to_local(w.created_at.utc).strftime('%B %d %Y %H:%S %P')
