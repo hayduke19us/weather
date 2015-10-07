@@ -2,8 +2,8 @@ require 'colorize'
 
 # Starts redis if it is not running
 begin
-
-  if `redis-cli ping`.match(/PONG/)
+  r = Redis.new
+  if r.ping.match(/PONG/)
     puts "Redis is already running".colorize(:green)
   else
     `redis-server`

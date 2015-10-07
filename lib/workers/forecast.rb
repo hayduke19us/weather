@@ -16,6 +16,7 @@ module Workers
         print_message msg.colorize(:red)
       end
 
+
     end
 
     def self.print_message msg
