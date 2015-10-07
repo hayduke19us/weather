@@ -17,7 +17,7 @@ gem "sinatra", "~> 1.4", require: "sinatra/base"
 gem "sinatra-contrib", require: ["sinatra/namespace", "sinatra/reloader"]
 gem "sinatra-router"
 gem "sucker_punch"
-gem  "sidekiq"
+gem "sidekiq"
 gem "clockwork"
 gem "rest-client"
 
