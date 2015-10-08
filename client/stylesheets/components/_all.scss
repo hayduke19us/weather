@@ -1,0 +1,13 @@
+@import 'widgets';
+
+button {
+  height: 50px;
+  width: auto;
+  padding: 10px;
+  margin-left: 6px;
+  background-color: $weather;
+  box-shadow: none; 
+  border: none;
+  font-size: 20px;
+  font-family: 'Oxygen', sans-serif; 
+}

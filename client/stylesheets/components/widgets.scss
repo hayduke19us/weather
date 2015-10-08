@@ -1,0 +1,65 @@
+.widget {
+  transition: all 0.3s ease 0s;
+  transition-duration: 0.5s;
+  height: 360px;
+  min-width: 300px;
+  width: 25%;
+  float: left;
+  box-shadow: inset 0 0 0 6px $dark-background;
+
+  .fa {
+    opacity: 0.8;
+    width: 100px;
+    height: 100px;
+  }
+
+  h1 {
+    color: white;
+    font-family: 'Oxygen', sans-serif;
+    text-align: center;
+    opacity: 0.8;
+    padding-top: 33%;
+  }
+}
+
+.widget.banner {
+  width: 100%;
+  height: 150px;
+  h1 {
+    padding-top: 0;
+  }
+}
+
+.widget.lg {
+  width: 100%;
+  h1 {
+    padding-top: 0;
+  }
+}
+
+a > .widget:hover {
+  background-color: darken($weather, 10%);
+  h1, .fa {
+    opacity: 1.0;
+  }
+}
+
+.widget.weather {
+  background-color: $weather;
+}
+
+.widget.thermostat {
+  background-color: $thermo;
+}
+
+.widget.garden {
+  background-color: $garden;
+}
+
+.widget.lights {
+  background-color: $lights;
+}
+
+.widget.internet {
+  background-color: $internet;
+}

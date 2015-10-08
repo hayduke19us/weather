@@ -8,6 +8,7 @@ module Endpoints
     helpers Pliny::Helpers::Encode
     helpers Pliny::Helpers::Params
 
+    set :html, :format => :html
     set :haml, :format => :html5
     set :dump_errors, false
     set :raise_errors, true
