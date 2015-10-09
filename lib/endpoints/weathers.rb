@@ -15,7 +15,7 @@ module Endpoints
 
       get do
         status 200
-        encode serialize(Weather.all)
+        encode serialize(Weather.last)
       end
 
       post do

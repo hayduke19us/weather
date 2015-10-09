@@ -21,9 +21,9 @@ module.exports = React.createClass({
       method: 'GET',
       contentType: 'application/json',
       success: function (resp) {
-        console.log(resp)
+        console.log(JSON.parse(resp.current).daily.data[0].icon)
         self.setState({
-          data: resp[0].current
+          data: JSON.parse(resp.current).daily.data[0].icon
         })
       }
     })

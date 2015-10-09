@@ -1,6 +1,7 @@
 Routes = Rack::Builder.new do
   use Rollbar::Middleware::Sinatra
-  use Pliny::Middleware::CORS
+  # I have to comment out this for react
+  # use Pliny::Middleware::CORS
   use Pliny::Middleware::RequestID
   use Pliny::Middleware::RescueErrors, raise: Config.raise_errors?
   use Pliny::Middleware::RequestStore, store: Pliny::RequestStore
