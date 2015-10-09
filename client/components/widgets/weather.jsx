@@ -23,7 +23,7 @@ module.exports = React.createClass({
       success: function (resp) {
         console.log(resp)
         self.setState({
-          data: resp
+          data: resp[0].current
         })
       }
     })
