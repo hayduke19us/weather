@@ -14,4 +14,7 @@ describe('Weather', function(){
   it('has a class of widget weather', function() {
     expect(ReactDom.findDOMNode(widget).className).toEqual('widget weather')
   });
+
+  it('makes an ajax request to $ROOT/weathers and gets a list of weathers', function(){
+  })
 });

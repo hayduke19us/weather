@@ -131,6 +131,7 @@ GEM
       rack-test
       sinatra (~> 1.4.0)
       tilt (>= 1.3, < 3)
+    sinatra-cross_origin (0.3.2)
     sinatra-router (0.2.3)
       sinatra (~> 1.4)
     slop (3.6.0)
@@ -182,6 +183,7 @@ DEPENDENCIES
   simplecov
   sinatra (~> 1.4)
   sinatra-contrib
+  sinatra-cross_origin
   sinatra-router
   sucker_punch
   webmock

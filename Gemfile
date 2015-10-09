@@ -27,6 +27,7 @@ group :development, :test do
   gem "pry-byebug"
   gem "byebug"
   gem "webmock"
+  gem "sinatra-cross_origin"
 end
 
 group :test do

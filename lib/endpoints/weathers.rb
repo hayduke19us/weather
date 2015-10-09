@@ -1,15 +1,20 @@
 module Endpoints
   class Weathers < Base
     namespace "/weathers" do
+
       before do
         content_type :json, charset: 'utf-8'
+        response.headers['Access-Control-Allow-Origin'] = 'http://localhost:8080'
       end
+
 
       def serialize data, structure = :default
         Serializers::Weather.new(structure).serialize(data)
       end
 
+
       get do
+        status 200
         encode serialize(Weather.all)
       end
 
