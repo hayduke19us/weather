@@ -7,4 +7,8 @@ describe Weather do
     current_weather = JSON.parse weather.current
     assert_equal current_weather['rain'], 'light'
   end
+
+  it('returns all with #all') do
+    assert_equal Weather.count, Weather.all_now
+  end
 end
