@@ -7,7 +7,7 @@
     "weather": {
       "$schema": "http://json-schema.org/draft-04/hyper-schema",
       "title": "Weather",
-      "description": "something",
+      "description": "A weather record broken up into jsonb",
       "stability": "prototype",
       "strictProperties": true,
       "type": [
@@ -29,6 +29,18 @@
             },
             {
               "$ref": "#/definitions/weather/definitions/current"
+            },
+            {
+              "$ref": "#/definitions/weather/definitions/hourly"
+            },
+            {
+              "$ref": "#/definitions/weather/definitions/daily"
+            },
+            {
+              "$ref": "#/definitions/weather/definitions/longitude"
+            },
+            {
+              "$ref": "#/definitions/weather/definitions/latitude"
             }
           ]
         },
@@ -50,6 +62,30 @@
           "description": "a jsonb string of current weather",
           "type": [
             "string"
+          ]
+        },
+        "hourly": {
+          "description": "a jsonb array of hourly hash weather reports",
+          "type": [
+            "string"
+          ]
+        },
+        "daily": {
+          "description": "a jsonb hash of a daily aggregation for the week",
+          "type": [
+            "string"
+          ]
+        },
+        "longitude": {
+          "description": "longitude in degrees",
+          "type": [
+            "number"
+          ]
+        },
+        "latitude": {
+          "description": "latitude in degrees",
+          "type": [
+            "number"
           ]
         }
       },
@@ -102,6 +138,13 @@
             ]
           },
           "title": "Update"
+        },
+        {
+          "description": "Get the current weather.",
+          "href": "/weathers/{(%23%2Fdefinitions%2Fweather%2Fdefinitions%2Fidentity)}",
+          "method": "GET",
+          "rel": "self",
+          "title": "Current Weather"
         }
       ],
       "properties": {
@@ -116,6 +159,18 @@
         },
         "current": {
           "$ref": "#/definitions/weather/definitions/current"
+        },
+        "hourly": {
+          "$ref": "#/definitions/weather/definitions/hourly"
+        },
+        "daily": {
+          "$ref": "#/definitions/weather/definitions/daily"
+        },
+        "longitude": {
+          "$ref": "#/definitions/weather/definitions/longitude"
+        },
+        "latitude": {
+          "$ref": "#/definitions/weather/definitions/latitude"
         }
       }
     }

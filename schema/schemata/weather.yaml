@@ -1,7 +1,7 @@
 ---
 "$schema": http://json-schema.org/draft-04/hyper-schema
 title: Weather
-description: something 
+description: A weather record broken up into jsonb
 stability: prototype
 strictProperties: true
 type:
@@ -17,6 +17,10 @@ definitions:
     anyOf:
     - "$ref": "/schemata/weather#/definitions/id"
     - "$ref": "/schemata/weather#/definitions/current"
+    - "$ref": "/schemata/weather#/definitions/hourly"
+    - "$ref": "/schemata/weather#/definitions/daily"
+    - "$ref": "/schemata/weather#/definitions/longitude"
+    - "$ref": "/schemata/weather#/definitions/latitude"
   created_at:
     description: when weather was created
     format: date-time
@@ -30,7 +34,23 @@ definitions:
   current:
     description: a jsonb string of current weather
     type:
-      - string
+    - string
+  hourly:
+    description: a jsonb array of hourly hash weather reports
+    type:
+    - string
+  daily:
+    description: a jsonb hash of a daily aggregation for the week
+    type:
+    - string
+  longitude:
+    description: longitude in degrees
+    type:
+    - number
+  latitude:
+    description: latitude in degrees
+    type:
+    - number
 links:
 - description: Create a new weather.
   href: "/weathers"
@@ -65,6 +85,11 @@ links:
     type:
     - object
   title: Update
+- description: Get the current weather.
+  href: "/weathers/{(%2Fschemata%2Fweather%23%2Fdefinitions%2Fidentity)}"
+  method: GET
+  rel: self
+  title: Current Weather
 properties:
   created_at:
     "$ref": "/schemata/weather#/definitions/created_at"
@@ -72,6 +97,14 @@ properties:
     "$ref": "/schemata/weather#/definitions/id"
   updated_at:
     "$ref": "/schemata/weather#/definitions/updated_at"
-  current: 
-    "$ref": "/schemata/weather#/definitions/current" 
+  current:
+    "$ref": "/schemata/weather#/definitions/current"
+  hourly:
+    "$ref": "/schemata/weather#/definitions/hourly"
+  daily:
+    "$ref": "/schemata/weather#/definitions/daily"
+  longitude:
+    "$ref": "/schemata/weather#/definitions/longitude"
+  latitude:
+    "$ref": "/schemata/weather#/definitions/latitude"
 id: schemata/weather

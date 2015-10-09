@@ -12,6 +12,16 @@ module Endpoints
         Serializers::Weather.new(structure).serialize(data)
       end
 
+      get "/current" do 
+        status 200
+        encode Weather.current
+      end
+
+      get "/daily/:limit" do |limit|
+        status 200
+        puts limit
+        encode Weather.daily(limit)
+      end
 
       get do
         status 200

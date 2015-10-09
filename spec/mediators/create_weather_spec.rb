@@ -17,8 +17,7 @@ describe Mediators::CreateWeather do
 
   it 'returns a json object with different keys' do
     weather = @create_weather.call
-    current_weather = JSON.parse weather.current
-    assert_equal 45.52, current_weather['latitude']
+    assert_equal 45.52, weather.latitude
   end
 
 end

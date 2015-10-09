@@ -1,24 +1,54 @@
 class Weather < Sequel::Model
   plugin :timestamps, update_on_create: true
 
+  def self.current
+    query = %[
+    SELECT
+      id, current FROM weathers ORDER BY created_at DESC LIMIT 1
+    ]
+
+    db[query].first
+  end
+
+  def self.daily limit=10
+    query = %[
+    SELECT
+      id, daily FROM weathers ORDER BY created_at DESC LIMIT #{limit}
+    ]
+
+    fetch_and_validate query, String, limit
+  end
+
   def self.colder_than temp
     query = %[
-      SELECT current FROM weathers WHERE current -> 'temp' < '#{temp}'
+    SELECT
+      id,
+      created_at,
+      current -> 'apparentTemperature' AS temperature
+      FROM weathers
+      WHERE current -> 'apparentTemperature' < '#{temp}'
     ]
+
     fetch_and_validate query, Float, temp
   end
 
   def self.hotter_than temp
     query = %[
-      SELECT current FROM weathers WHERE current -> 'temp' > '#{temp}'
+    SELECT
+      id,
+      created_at,
+      current -> 'apparentTemperature' AS temperature
+      FROM weathers
+      WHERE current -> 'apparentTemperature' < '#{temp}'
     ]
+
     fetch_and_validate query, Float, temp
   end
 
-  # Only searches thru top-level keys 
-  def self.has_key key 
+  # Only searches thru top-level keys
+  def self.has_key key
     query = %[
-      SELECT current FROM weathers WHERE current ? '#{key}'
+      SELECT id, current FROM weathers WHERE current ? '#{key}'
     ]
     fetch_and_validate query, String, key
   end

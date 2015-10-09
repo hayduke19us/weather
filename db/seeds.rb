@@ -31,13 +31,23 @@ def create_weathers
   reset_count
   100.times do
     count_1
-    id = _DB[:weathers].insert(current: rnd_hash)
-    # obj = _DB[:weathers][id: id]
-    # puts print_message obj
+    _DB[:weathers].insert(current: current,
+                         hourly: hourly,
+                         daily: daily,
+                         longitude: -120.000,
+                         latitude: 42.452)
   end
 end
 
-def rnd_hash
+def current
+  MultiJson.encode(temp: rand(0..100), rain: rnd_weight, cloudy: rnd_bool)
+end
+
+def hourly
+  MultiJson.encode(temp: rand(0..100), rain: rnd_weight, cloudy: rnd_bool)
+end
+
+def daily
   MultiJson.encode(temp: rand(0..100), rain: rnd_weight, cloudy: rnd_bool)
 end
 
