@@ -49,7 +49,7 @@ module.exports = React.createClass({
     return (
       <div>
         <div className='widget weather'>
-          <Link href='/weather_large'><h1>Weather</h1></Link>
+          <Link href='/weather'><h1>Weather</h1></Link>
           <div className='center'>
             <FontA_ className='large-icon' name='cloud'
             style={{ color: 'white' }} />

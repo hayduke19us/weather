@@ -1,5 +1,10 @@
 var React = require('react');
-var FontA_ = require('react-fontawesome');
+var Link = require('react-router-component').Link
+var ReactDom = require('react-dom')
+var FontA_ = require('react-fontawesome')
+var reqwest = require('reqwest')
+var Main = require('../../main.jsx')
+
 
 module.exports = React.createClass({
   getInitialState: function() {
@@ -8,14 +13,13 @@ module.exports = React.createClass({
 
   componentDidMount: function() {
     if (this.isMounted()) {
-      alert('hello')
     }
   },
 
   render: function() {
     return (
-      <div className='widget large weather'>
-        <h1>Weather</h1>
+      <div className='widget weather'>
+        <Link href='/'>Link</Link>
       </div>
     );
   }

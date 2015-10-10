@@ -1,16 +1,25 @@
 var React = require('react');
 var FontA_ = require('react-fontawesome');
+var ReactDom = require('react-dom')
+
+var Weather = require('../widgets/weather.jsx')
+var Thermostat = require('../widgets/thermostat.jsx')
+var Garden = require('../widgets/garden.jsx')
+var Lights = require('../widgets/lights.jsx')
+var Internet = require('../widgets/internet.jsx')
+
 
 module.exports = React.createClass({
   render: function () {
     return (
       <div id='components'>
-        <div id='weather'></div>
-        <div id='thermo'></div>
-        <div id='garden'></div>
-        <div id='internet'></div>
-        <div id='lights'></div>
+        <Weather />
+        <Thermostat />
+        <Garden />
+        <Internet />
+        <Lights />
       </div>
     );
   }
 });
+
