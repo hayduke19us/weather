@@ -1,11 +1,17 @@
 var React = require('react');
+var Link = require('react-router-component').Link
+var ReactDom = require('react-dom')
 var FontA_ = require('react-fontawesome');
 var reqwest = require('reqwest')
 
 module.exports = React.createClass({
   getInitialState: function() {
     return {
-      data: '',
+      temp: '',
+      summary: '',
+      time: '',
+      ozone: '',
+      icon: ''
     };
   },
 
@@ -15,32 +21,44 @@ module.exports = React.createClass({
     }
   },
 
+  handleClick: function() {
+    var x = ReactDom.findDOMNode(this)
+    x.style.background='black'
+  },
+
   getWeather: function(self) {
     reqwest({
-      url: 'http://localhost:5000/weathers',
+      url: 'http://localhost:5000/weathers/current',
       method: 'GET',
       contentType: 'application/json',
       success: function (resp) {
-        console.log(JSON.parse(resp.current).daily.data[0].icon)
+        console.log(resp)
+        var current = JSON.parse(resp.current)
         self.setState({
-          data: JSON.parse(resp.current).daily.data[0].icon
+          temp: current.temperature,
+          summary: current.summary,
+          time: current.time,
+          ozone: current.ozone,
+          icon: current.icon
         })
       }
     })
   },
 
-
   render: function() {
     return (
-      <a href='#'>
+      <div>
         <div className='widget weather'>
-          <h1>{this.state.data}</h1>
+          <Link href='/weather_large'><h1>Weather</h1></Link>
           <div className='center'>
             <FontA_ className='large-icon' name='cloud'
             style={{ color: 'white' }} />
+            <h2>{this.state.temp} F</h2>
+            <h2>{this.state.summary} </h2>
           </div>
         </div>
-      </a>
+        {this.props.children}
+      </div>
     );
   }
 })

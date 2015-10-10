@@ -89,7 +89,13 @@ links:
   href: "/weathers/{(%2Fschemata%2Fweather%23%2Fdefinitions%2Fidentity)}"
   method: GET
   rel: self
-  title: Current Weather
+  title: Current weather
+- description: Get the daily agregates takes a query paramater of /:limit.
+  href: "/weathers/{(%2Fschemata%2Fweather%23%2Fdefinitions%2Fidentity)}"
+  method: GET
+  rel: instances
+  title: Daily weather
+
 properties:
   created_at:
     "$ref": "/schemata/weather#/definitions/created_at"

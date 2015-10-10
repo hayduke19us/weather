@@ -144,7 +144,14 @@
           "href": "/weathers/{(%23%2Fdefinitions%2Fweather%2Fdefinitions%2Fidentity)}",
           "method": "GET",
           "rel": "self",
-          "title": "Current Weather"
+          "title": "Current weather"
+        },
+        {
+          "description": "Get the daily agregates takes a query paramater of /:limit.",
+          "href": "/weathers/{(%23%2Fdefinitions%2Fweather%2Fdefinitions%2Fidentity)}",
+          "method": "GET",
+          "rel": "instances",
+          "title": "Daily weather"
         }
       ],
       "properties": {
