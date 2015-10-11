@@ -3,7 +3,6 @@ var Link = require('react-router-component').Link
 var ReactDom = require('react-dom')
 var FontA_ = require('react-fontawesome')
 var reqwest = require('reqwest')
-var Main = require('../../main.jsx')
 
 
 module.exports = React.createClass({
@@ -18,8 +17,8 @@ module.exports = React.createClass({
 
   render: function() {
     return (
-      <div className='widget weather'>
-        <Link href='/'>Link</Link>
+      <div className='widget lg weather'>
+        <Link href='/'><h1>Home</h1></Link>
       </div>
     );
   }

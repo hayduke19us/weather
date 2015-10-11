@@ -1,13 +1,10 @@
 var React = require('react');
-var FontA_ = require('react-fontawesome');
-var ReactDom = require('react-dom')
 
 var Weather = require('../widgets/weather.jsx')
 var Thermostat = require('../widgets/thermostat.jsx')
 var Garden = require('../widgets/garden.jsx')
 var Lights = require('../widgets/lights.jsx')
 var Internet = require('../widgets/internet.jsx')
-
 
 module.exports = React.createClass({
   render: function () {
@@ -22,4 +19,3 @@ module.exports = React.createClass({
     );
   }
 });
-

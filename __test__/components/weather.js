@@ -2,19 +2,23 @@ var __path__ = '../../client/components/widgets/weather.jsx'
 jest.dontMock(__path__)
 
 var React = require('react'),
-    ReactDom = require('react-dom'),
-    TestUtils = require('react-addons-test-utils')
+    TestUtils = require('react-addons-test-utils'),
+    ShallowRenderer = TestUtils.createRenderer();
 
-var Weather = require(__path__),
-    weather_widget = TestUtils.renderIntoDocument(<Weather/>),
-    widget = TestUtils.findRenderedDOMComponentWithClass(weather_widget, 
-                                                       'widget weather')
+var Weather = require(__path__)
 
 describe('Weather', function(){
-  it('has a class of widget weather', function() {
-    expect(ReactDom.findDOMNode(widget).className).toEqual('widget weather')
-  });
+  ShallowRenderer.render(React.createElement(Weather))
+  var output = ShallowRenderer.getRenderOutput()
+  // We always have a div wrapper around our widget hence the first
+  // props.children
+  var widget = output.props.children.props
 
-  it('makes an ajax request to $ROOT/weathers and gets a list of weathers', function(){
+  it('has a a div with a className of widget weather', function(){
+    expect(widget.children.props.className).toEqual('widget weather')
+  })
+
+  it('is a link to a larger view', function(){
+    expect(widget.href).toEqual('/weather')
   })
 });

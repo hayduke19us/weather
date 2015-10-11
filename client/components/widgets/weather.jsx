@@ -21,11 +21,6 @@ module.exports = React.createClass({
     }
   },
 
-  handleClick: function() {
-    var x = ReactDom.findDOMNode(this)
-    x.style.background='black'
-  },
-
   getWeather: function(self) {
     reqwest({
       url: 'http://localhost:5000/weathers/current',
@@ -48,16 +43,16 @@ module.exports = React.createClass({
   render: function() {
     return (
       <div>
-        <div className='widget weather'>
-          <Link href='/weather'><h1>Weather</h1></Link>
-          <div className='center'>
-            <FontA_ className='large-icon' name='cloud'
-            style={{ color: 'white' }} />
-            <h2>{this.state.temp} F</h2>
-            <h2>{this.state.summary} </h2>
+        <Link href='/weather'>
+          <div className='widget weather'>
+            <h1>Weather</h1>
+            <div className='center'>
+              <FontA_ className='large-icon' name='cloud'
+              style={{ color: 'white' }} />
+              <h2>{this.state.summary}</h2>
+            </div>
           </div>
-        </div>
-        {this.props.children}
+        </Link>
       </div>
     );
   }
