@@ -3,6 +3,7 @@ var Link = require('react-router-component').Link
 var ReactDom = require('react-dom')
 var FontA_ = require('react-fontawesome');
 var reqwest = require('reqwest')
+var SockJS = require('sockjs-client')
 
 module.exports = React.createClass({
   getInitialState: function() {
@@ -18,7 +19,11 @@ module.exports = React.createClass({
   componentDidMount: function() {
     if (this.isMounted()) {
       this.getWeather(this)
+      this.getWeatherState()
     }
+  },
+
+  getWeatherState: function(){
   },
 
   getWeather: function(self) {
@@ -27,7 +32,6 @@ module.exports = React.createClass({
       method: 'GET',
       contentType: 'application/json',
       success: function (resp) {
-        console.log(resp)
         var current = JSON.parse(resp.current)
         self.setState({
           temp: current.temperature,

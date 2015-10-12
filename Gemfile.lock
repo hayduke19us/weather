@@ -35,6 +35,10 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.0.2)
     erubis (2.7.0)
+    eventmachine (1.0.8)
+    faye-websocket (0.10.0)
+      eventmachine (>= 0.12.0)
+      websocket-driver (>= 0.5.1)
     haml (4.0.7)
       tilt
     hitimes (1.2.3)
@@ -150,6 +154,9 @@ GEM
     webmock (1.21.0)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
+    websocket-driver (0.6.2)
+      websocket-extensions (>= 0.1.0)
+    websocket-extensions (0.1.2)
 
 PLATFORMS
   ruby
@@ -162,6 +169,7 @@ DEPENDENCIES
   committee
   database_cleaner
   dotenv
+  faye-websocket
   haml
   multi_json
   oj

@@ -7,7 +7,7 @@ class Weather < Sequel::Model
       id, current FROM weathers ORDER BY created_at DESC LIMIT 1
     ]
 
-    db[query].first
+    self.db[query].first
   end
 
   def self.daily limit=10

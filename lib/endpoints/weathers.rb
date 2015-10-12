@@ -7,7 +7,6 @@ module Endpoints
         response.headers['Access-Control-Allow-Origin'] = 'http://localhost:8080'
       end
 
-
       def serialize data, structure = :default
         Serializers::Weather.new(structure).serialize(data)
       end

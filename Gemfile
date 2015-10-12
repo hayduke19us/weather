@@ -22,6 +22,7 @@ gem "clockwork"
 gem "rest-client"
 gem "colorize"
 gem "haml"
+gem "faye-websocket"
 
 group :development, :test do
   gem "pry-byebug"

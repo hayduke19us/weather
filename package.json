@@ -33,9 +33,11 @@
     "react-test-utils": "0.0.1",
     "reqwest": "^1.1.5",
     "sass-loader": "^2.0.1",
+    "sockjs-client": "^1.0.3",
     "style-loader": "^0.8.3",
     "webpack": "^1.6.0",
-    "webpack-dev-server": "^1.8.0"
+    "webpack-dev-server": "^1.8.0",
+    "ws": "^0.8.0"
   },
   "devDependencies": {
     "jest-cli": "^0.5.8",
