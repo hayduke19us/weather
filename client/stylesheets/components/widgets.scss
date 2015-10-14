@@ -1,7 +1,7 @@
 .widget {
   transition: all 0.3s ease 0s;
   transition-duration: 0.5s;
-  height: 360px;
+  min-height: 360px;
   float: left;
   width: 100%;
   padding: 10px;

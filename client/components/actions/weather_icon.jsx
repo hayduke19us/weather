@@ -19,13 +19,11 @@ function iconSwitch (icon) {
 module.exports = React.createClass({
 
   switchIcon: function(icon){
-    console.log(iconSwitch(icon))
     return iconSwitch(icon)
   },
 
   iconStr: function(){
     var str =  "climacon " + this.switchIcon(this.props.icon) + " large-icon"
-    console.log(str)
     return str
   },
 

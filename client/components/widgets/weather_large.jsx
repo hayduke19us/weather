@@ -1,41 +1,32 @@
 var React = require('react');
 var Link = require('react-router-component').Link
 var ReactDom = require('react-dom')
-var FontA_ = require('react-fontawesome')
-var reqwest = require('reqwest')
+var ListDailyWeather = require('./list_daily_weather.jsx')
 
 module.exports = React.createClass({
   getInitialState: function() {
-    return {data: ''};
+    return {data: '', testData: ''};
   },
 
   componentDidMount: function() {
     if (this.isMounted()) {
-      console.log('this is mounted')
-      this.getDailyWeather(this)
+      console.log('weather large has mounted')
     }
-  },
-
-  getDailyWeather: function(self) {
-    console.log('making request')
-    reqwest({
-      url: 'http://localhost:5000/weathers/daily/10',
-      method: 'GET',
-      contentType: 'application/json',
-      success: function (resp) {
-        console.log(JSON.parse(resp[0].daily).data[0].icon)
-        self.setState({
-          data: JSON.parse(resp[0].daily).data[0]
-        })
-      }
-    })
   },
 
   render: function() {
     return (
-      <div className='widget lg weather'>
-        <h1>{this.state.data.icon}</h1>
-        <Link href='/'><h1>Back</h1></Link>
+      <div className='container-fluid'>
+        <div className='row'>
+          <div className='col-lg-12'>
+            <div className='widget lg weather'>
+              <Link href='/'>Back</Link>
+            </div>
+            <div className='widget lg weather'>
+              <ListDailyWeather/>
+            </div>
+          </div>
+        </div>
       </div>
    )
   }

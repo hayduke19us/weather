@@ -37,8 +37,6 @@ module.exports = React.createClass({
       this.getWeather(this)
       this.getWeatherState()
     }
-    console.log(Config.REDIS_URL)
-    console.log(Config.WS)
   },
 
   getWeatherState: function(){
@@ -69,6 +67,7 @@ module.exports = React.createClass({
         <Link href='/weather'>
           <div className='widget weather'>
             <WeatherIcon icon={this.state.icon} />
+            <h5 className='white'>Weather</h5>
             <h1 className='inline white'>{ this.state.temp } </h1> 
             <span className='climacon farenheit large-icon' />
             <h4 className=''>{ this.state.summary } </h4> 

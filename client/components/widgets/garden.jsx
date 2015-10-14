@@ -6,11 +6,8 @@ module.exports = React.createClass({
     return (
       <a href='#'>
         <div className='widget garden'>
-          <h1>Garden</h1>
-          <div className='center'>
-            <FontA_ className='large-icon' name='sun-o'
-            style={{ color: 'white' }} />
-          </div>
+          <span className='climacon sun large-icon'/>
+          <h5 className='white'>Garden</h5>
         </div>
       </a>
     );
