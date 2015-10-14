@@ -21,9 +21,9 @@ module.exports = React.createClass({
           <div className='col-lg-12'>
             <div className='widget lg weather'>
               <Link href='/'>Back</Link>
+              <ListDailyWeather/>
             </div>
             <div className='widget lg weather'>
-              <ListDailyWeather/>
             </div>
           </div>
         </div>
