@@ -1,7 +1,6 @@
 require "socket"
-require "Pathname"
-require "json"
 require "sequel"
+require "json"
 require "colorize"
 
 # Sequel::Model.db = "postgres:///weather-development" || ENV['DATABASE_URL']
@@ -14,10 +13,8 @@ class Server
   def initialize(ip, port)
     @server = TCPServer.open ip, port
     @connections  = Hash.new
-    @rooms = Hash.new
-    @clients = Hash.new
+    @clients      = Hash.new
     @connections[:server] = @server
-    @connections[:rooms] = @rooms
     @connections[:clients] = @clients
     @log_path = File.dirname(__FILE__) + 'log.json'
   end

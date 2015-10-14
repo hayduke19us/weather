@@ -1,8 +1,7 @@
 body {
-  background-color: $dark-background;
+  background-color: $dark-background !important;
   font-family: 'Oxygen', sans-serif;
-  margin: 0;
-  padding: 0;
 }
 
 a {text-decoration: none;}
+

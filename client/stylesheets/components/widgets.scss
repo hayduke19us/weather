@@ -2,10 +2,9 @@
   transition: all 0.3s ease 0s;
   transition-duration: 0.5s;
   height: 360px;
-  min-width: 300px;
-  width: 25%;
   float: left;
-  box-shadow: inset 0 0 0 6px $dark-background;
+  width: 100%;
+  padding: 10px;
 
   .fa {
     opacity: 0.8;
@@ -13,25 +12,16 @@
     height: 100px;
   }
 
-  h1 {
+  h1, h2, h3, h4 {
     color: white;
     font-family: 'Oxygen', sans-serif;
-    text-align: center;
-    opacity: 0.8;
-    padding-top: 33%;
   }
+
 }
 
 .widget.banner {
   width: 100%;
   height: 150px;
-  h1 {
-    padding-top: 0;
-  }
-}
-
-.widget.lg {
-  width: 100%;
   h1 {
     padding-top: 0;
   }

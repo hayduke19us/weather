@@ -9,12 +9,24 @@ var Internet = require('../widgets/internet.jsx')
 module.exports = React.createClass({
   render: function () {
     return (
-      <div id='components'>
-        <Weather />
-        <Thermostat />
-        <Garden />
-        <Internet />
-        <Lights />
+      <div className='container-fluid'>
+        <div className='row'>
+          <div className='col-lg-3'> 
+            <Weather />
+          </div>
+          <div className='col-lg-3'> 
+            <Thermostat />
+          </div>
+          <div className='col-lg-3'> 
+            <Garden />
+          </div>
+          <div className='col-lg-3'> 
+            <Internet />
+          </div>
+          <div className='col-lg-12'> 
+            <Lights />
+          </div>
+        </div>
       </div>
     );
   }
