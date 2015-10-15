@@ -19,12 +19,10 @@ module.exports = React.createClass({
       <div className='container-fluid'>
         <div className='row'>
           <div className='col-lg-12'>
-            <div className='widget lg weather'>
-              <Link href='/'>Back</Link>
-              <ListDailyWeather/>
-            </div>
-            <div className='widget lg weather'>
-            </div>
+            <Link href='/'>
+              <span className='climacon rain large-icon'/>
+            </Link>
+            <ListDailyWeather/>
           </div>
         </div>
       </div>

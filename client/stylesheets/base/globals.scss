@@ -3,6 +3,16 @@
 .large-icon { font-size: 60px; }
 .white {color: white;}
 
+.chart rect {
+  fill: $weather;
+}
+
+.chart text {
+  fill: white;
+  font: 10px sans-serif;
+  text-anchor: end;
+}
+
 // Layout
 #main-content {
   width: 100%;

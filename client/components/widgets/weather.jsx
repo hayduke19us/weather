@@ -6,20 +6,14 @@ var ReactDom = require('react-dom')
 var FontA_ = require('react-fontawesome')
 var reqwest = require('reqwest')
 var WebSocket = require('ws')
+var TimeHelper = require('../../helpers/time_helper.js')
+
 var Ws = new WebSocket('ws://localhost:5000')
 Ws.onmessage = function(msg) {
  console.log(msg) 
 }
 
 var WeatherIcon = require('../actions/weather_icon.jsx')
-
-function humanTime(time) {
-  var date = new Date(time*1000)
-      dateStr = date.toDateString()
-      hour    = date.getHours()
-      minutes = date.getMinutes()
-      return dateStr + ' ' + hour + ':' + minutes
-}
 
 module.exports = React.createClass({
   getInitialState: function() {
@@ -49,11 +43,10 @@ module.exports = React.createClass({
       contentType: 'application/json',
       success: function (resp) {
         var current = JSON.parse(resp.current)
-        var time = new Date(current.time*1000)
         self.setState({
           temp: current.temperature,
           summary: current.summary,
-          time: humanTime(current.time),
+          time: TimeHelper.humanTime(current.time),
           ozone: current.ozone,
           icon: current.icon
         })

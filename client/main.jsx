@@ -5,7 +5,7 @@ var Router = require('./config/routes.jsx')
 
 var App = require('./components/layout/App.jsx');
 
-require('./stylesheets/main.scss')
 require('bootstrap/dist/css/bootstrap.css')
+require('./stylesheets/main.scss')
 
 ReactDom.render(React.createElement(Router), document.getElementById('router'));
