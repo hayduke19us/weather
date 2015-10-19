@@ -7,7 +7,8 @@ module.exports = React.createClass({
   getInitialState: function(){
     return ({
       data: '',
-      graph: ''
+      graph: '',
+      ids: []
     })
   },
 
@@ -19,8 +20,22 @@ module.exports = React.createClass({
   },
 
   setData: function(resp) {
+    var data = resp.map( function(el, index) {
+      return this.serialize(el.id, el.daily)
+    }.bind(this))
+
+    var mapIds = function (data) {
+      var ids = []
+
+      data.forEach(function(el){
+        ids.push(el.id)
+      })
+      return ids
+    }
+
     this.setState({
-      data: resp
+      data: data,
+      ids: mapIds(data)
     })
   },
 
@@ -41,13 +56,9 @@ module.exports = React.createClass({
   },
 
   getDailyList: function () {
-    var daily = this.state.data
-    if ( daily.length > 0 ) {
-
-     var data = daily.map( function(el, index) {
-        return this.serialize(el.id, el.daily)
-      }.bind(this))
-
+    var data = this.state.data
+    if ( data.length > 0 ) {
+      console.log(this.state)
      return this.renderDailyList(data)
     }
   },
@@ -71,46 +82,53 @@ module.exports = React.createClass({
     return { id: id, data: dataArray, graph: graph }
   },
 
+  graphIt: function(data){
+    data.forEach( function(data){
+      var data = data.graph
+      console.log(data.graph)
+
+      var width = 960
+          height = 500
+
+      var y = d3.scale.linear()
+          .range([height, 0])
+
+      var chart = d3.select('.chart')
+          .attr('width', width)
+          .attr('height', height)
+
+      y.domain([0, d3.max(data)]) 
+
+      var barWidth = width / data.length
+
+      var bar = chart.selectAll('g')
+          .data(data)
+        .enter().append('g')
+          .attr('transform', function(d, i) { return "translate(" + i * barWidth + ",0)"; });
+
+      bar.append("rect")
+         .attr("y", function(d) { return y(d) })
+         .attr("height", function(d) { return height - y(d) })
+         .attr("width", barWidth - 1)
+
+      bar.append("text")
+         .attr("x", barWidth / 2)
+         .attr("y", function(d) { return y(d) + 3 })
+         .attr("dy", ".75em")
+         .text(function(d) { return d; });
+    })
+  },
+
   renderDailyList: function(data) {
-    var data = data[0].graph
-    console.log(data)
-
-    var width = 960
-        height = 500
-
-    var y = d3.scale.linear()
-        .range([height, 0])
-
-    var chart = d3.select('.chart')
-        .attr('width', width)
-        .attr('height', height)
-
-    y.domain([0, d3.max(data)]) 
-
-    var barWidth = width / data.length
-
-    var bar = chart.selectAll('g')
-        .data(data)
-      .enter().append('g')
-        .attr('transform', function(d, i) { return "translate(" + i * barWidth + ",0)"; });
-
-    bar.append("rect")
-       .attr("y", function(d) { return y(d) })
-       .attr("height", function(d) { return height - y(d) })
-       .attr("width", barWidth - 1)
-
-    bar.append("text")
-       .attr("x", barWidth / 2)
-       .attr("y", function(d) { return y(d) + 3 })
-       .attr("dy", ".75em")
-       .text(function(d) { return d; });
-
 
     var uniform = data.map( function(el) {
       return (
-        <div className='col-lg-4'>
+        <div className='col-lg-12'>
           <div className='widget weather'>
             <ul key={el.id}>{el.data}</ul>
+            <div className='right'>
+              <svg className={'chart ' + el.id}/>
+            </div>
           </div>
         </div>
       )
@@ -119,15 +137,8 @@ module.exports = React.createClass({
   },
 
  render: function(){
-   this.getDailyList()
    return (
-     <div>
-       <div className='row'>
-         <div className='col-lg-12'>
-           <svg className='chart' />
-         </div>
-       </div>
-     </div>
+     <div>{this.getDailyList()}</div>
    )
  }
 })

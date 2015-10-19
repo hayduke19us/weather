@@ -22,11 +22,14 @@ module Endpoints
     end
 
     options '/*' do
-      response.headers["Access-Control-Allow-Origin"] = "http://localhost:8080"
-      response.headers["Access-Control-Allow-Methods"] = "GET"
-      response.headers["Access-Control-Allow-Headers"] = "X-Requested-With, Content-Type"
+      if Config.pliny_env =~ /\A(development|test)/
+
+        response.headers["Access-Control-Allow-Origin"] = "http://localhost:8080"
+        response.headers["Access-Control-Allow-Methods"] = "GET"
+        response.headers["Access-Control-Allow-Headers"] = "X-Requested-With, Content-Type"
 
       200
+      end
     end
 
 

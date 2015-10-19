@@ -4,7 +4,10 @@ module Endpoints
 
       before do
         content_type :json, charset: 'utf-8'
-        response.headers['Access-Control-Allow-Origin'] = 'http://localhost:8080'
+
+        if Config.pliny_env =~ /\A(development|test)/
+          response.headers['Access-Control-Allow-Origin'] = 'http://localhost:8080'
+        end
       end
 
       def serialize data, structure = :default
