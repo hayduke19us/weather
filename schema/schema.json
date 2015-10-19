@@ -4,6 +4,200 @@
     "object"
   ],
   "definitions": {
+    "internet": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "FIXME - Internet",
+      "description": "FIXME",
+      "stability": "prototype",
+      "strictProperties": true,
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "id": {
+          "description": "unique identifier of internet",
+          "readOnly": true,
+          "format": "uuid",
+          "type": [
+            "string"
+          ]
+        },
+        "name": {
+          "description": "unique name of internet",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "address": {
+          "description": "the mac address encrypted",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "ip": {
+          "description": "the ip address allotted",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "signal": {
+          "description": "signal number",
+          "readOnly": true,
+          "type": [
+            "number"
+          ]
+        },
+        "noise": {
+          "description": "signal noise for the router",
+          "readOnly": true,
+          "type": [
+            "number"
+          ]
+        },
+        "snr": {
+          "description": "I don't know what this is but it's a number",
+          "readOnly": true,
+          "type": [
+            "number"
+          ]
+        },
+        "signal_quality": {
+          "description": "percentage of signal quality",
+          "readOnly": true,
+          "type": [
+            "float"
+          ]
+        },
+        "identity": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/internet/definitions/id"
+            },
+            {
+              "$ref": "#/definitions/internet/definitions/name"
+            },
+            {
+              "$ref": "#/definitions/internet/definitions/address"
+            },
+            {
+              "$ref": "#/definitions/internet/definitions/ip"
+            },
+            {
+              "$ref": "#/definitions/internet/definitions/signal"
+            },
+            {
+              "$ref": "#/definitions/internet/definitions/noise"
+            },
+            {
+              "$ref": "#/definitions/internet/definitions/snr"
+            },
+            {
+              "$ref": "#/definitions/internet/definitions/signal_quality"
+            }
+          ]
+        },
+        "created_at": {
+          "description": "when internet was created",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        },
+        "updated_at": {
+          "description": "when internet was updated",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "links": [
+        {
+          "description": "Create a new internet.",
+          "href": "/internets",
+          "method": "POST",
+          "rel": "create",
+          "schema": {
+            "properties": {
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Create"
+        },
+        {
+          "description": "Delete an existing internet.",
+          "href": "/internets/{(%23%2Fdefinitions%2Finternet%2Fdefinitions%2Fidentity)}",
+          "method": "DELETE",
+          "rel": "destroy",
+          "title": "Delete"
+        },
+        {
+          "description": "Info for existing internet.",
+          "href": "/internets/{(%23%2Fdefinitions%2Finternet%2Fdefinitions%2Fidentity)}",
+          "method": "GET",
+          "rel": "self",
+          "title": "Info"
+        },
+        {
+          "description": "List existing internets.",
+          "href": "/internets",
+          "method": "GET",
+          "rel": "instances",
+          "title": "List"
+        },
+        {
+          "description": "Update an existing internet.",
+          "href": "/internets/{(%23%2Fdefinitions%2Finternet%2Fdefinitions%2Fidentity)}",
+          "method": "PATCH",
+          "rel": "update",
+          "schema": {
+            "properties": {
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Update"
+        }
+      ],
+      "properties": {
+        "created_at": {
+          "$ref": "#/definitions/internet/definitions/created_at"
+        },
+        "id": {
+          "$ref": "#/definitions/internet/definitions/id"
+        },
+        "name": {
+          "$ref": "#/definitions/internet/definitions/name"
+        },
+        "updated_at": {
+          "$ref": "#/definitions/internet/definitions/updated_at"
+        },
+        "address": {
+          "$ref": "#/definitions/internet/definitions/address"
+        },
+        "ip": {
+          "$ref": "#/definitions/internet/definitions/ip"
+        },
+        "signal": {
+          "$ref": "#/definitions/internet/definitions/signal"
+        },
+        "noise": {
+          "$ref": "#/definitions/internet/definitions/noise"
+        },
+        "snr": {
+          "$ref": "#/definitions/internet/definitions/snr"
+        },
+        "signal_quality": {
+          "$ref": "#/definitions/internet/definitions/signal_quality"
+        }
+      }
+    },
     "weather": {
       "$schema": "http://json-schema.org/draft-04/hyper-schema",
       "title": "Weather",
@@ -183,6 +377,9 @@
     }
   },
   "properties": {
+    "internet": {
+      "$ref": "#/definitions/internet"
+    },
     "weather": {
       "$ref": "#/definitions/weather"
     }

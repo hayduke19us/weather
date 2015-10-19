@@ -1,0 +1,126 @@
+---
+"$schema": http://json-schema.org/draft-04/hyper-schema
+title: FIXME - Internet
+description: FIXME
+stability: prototype
+strictProperties: true
+type:
+- object
+definitions:
+  id:
+    description: unique identifier of internet
+    readOnly: true
+    format: uuid
+    type:
+    - string
+  name:
+    description: unique name of internet
+    readOnly: true
+    type:
+    - string
+  address:
+    description: the mac address encrypted
+    readOnly: true
+    type:
+    - string
+  ip:
+    description: the ip address allotted 
+    readOnly: true
+    type:
+    - string
+  signal:
+    description: signal number
+    readOnly: true
+    type:
+    - number
+  noise:
+    description: signal noise for the router
+    readOnly: true
+    type:
+    - number
+  snr:
+    description: I don't know what this is but it's a number
+    readOnly: true
+    type:
+    - number
+  signal_quality:
+    description: percentage of signal quality 
+    readOnly: true
+    type:
+    - float
+  identity:
+    anyOf:
+    - "$ref": "/schemata/internet#/definitions/id"
+    - "$ref": "/schemata/internet#/definitions/name"
+    - "$ref": "/schemata/internet#/definitions/address"
+    - "$ref": "/schemata/internet#/definitions/ip"
+    - "$ref": "/schemata/internet#/definitions/signal"
+    - "$ref": "/schemata/internet#/definitions/noise"
+    - "$ref": "/schemata/internet#/definitions/snr"
+    - "$ref": "/schemata/internet#/definitions/signal_quality"
+  created_at:
+    description: when internet was created
+    format: date-time
+    type:
+    - string
+  updated_at:
+    description: when internet was updated
+    format: date-time
+    type:
+    - string
+links:
+- description: Create a new internet.
+  href: "/internets"
+  method: POST
+  rel: create
+  schema:
+    properties: {}
+    type:
+    - object
+  title: Create
+- description: Delete an existing internet.
+  href: "/internets/{(%2Fschemata%2Finternet%23%2Fdefinitions%2Fidentity)}"
+  method: DELETE
+  rel: destroy
+  title: Delete
+- description: Info for existing internet.
+  href: "/internets/{(%2Fschemata%2Finternet%23%2Fdefinitions%2Fidentity)}"
+  method: GET
+  rel: self
+  title: Info
+- description: List existing internets.
+  href: "/internets"
+  method: GET
+  rel: instances
+  title: List
+- description: Update an existing internet.
+  href: "/internets/{(%2Fschemata%2Finternet%23%2Fdefinitions%2Fidentity)}"
+  method: PATCH
+  rel: update
+  schema:
+    properties: {}
+    type:
+    - object
+  title: Update
+properties:
+  created_at:
+    "$ref": "/schemata/internet#/definitions/created_at"
+  id:
+    "$ref": "/schemata/internet#/definitions/id"
+  name:
+    "$ref": "/schemata/internet#/definitions/name"
+  updated_at:
+    "$ref": "/schemata/internet#/definitions/updated_at"
+  address:
+    "$ref": "/schemata/internet#/definitions/address"
+  ip:
+    "$ref": "/schemata/internet#/definitions/ip"
+  signal:
+    "$ref": "/schemata/internet#/definitions/signal"
+  noise:
+    "$ref": "/schemata/internet#/definitions/noise"
+  snr:
+    "$ref": "/schemata/internet#/definitions/snr"
+  signal_quality:
+    "$ref": "/schemata/internet#/definitions/signal_quality"
+id: schemata/internet
