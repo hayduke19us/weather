@@ -14,6 +14,7 @@ describe Endpoints::Weathers do
 
   describe 'GET /weathers' do
     it 'returns correct status code and conforms to schema' do
+      puts Config.pliny_env
       get '/weathers'
       assert_equal 200, last_response.status
       assert_schema_conform

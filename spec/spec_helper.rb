@@ -26,6 +26,7 @@ end
 require 'dotenv'
 Dotenv.load('.env.test')
 
+# pull in all the modesls, mediators etc.
 require_relative "../lib/initializer"
 
 # pull in test initializers
@@ -33,13 +34,15 @@ Pliny::Utils.require_glob("#{Config.root}/spec/support/**/*.rb")
 
 RSpec.configure do |config|
   config.before :suite do
+    sequel = Sequel.connect ENV['DATABASE_URL']
+    DatabaseCleaner[:sequel, connection: sequel]
     DatabaseCleaner.clean_with(:truncation)
     DatabaseCleaner.strategy = :transaction
   end
 
 
   config.before :all do
-    load('db/seeds.rb') if File.exist?('db/seeds.rb')
+    load 'db/seeds.rb' if File.exist? 'db/seeds.rb'
   end
 
   config.before :each do

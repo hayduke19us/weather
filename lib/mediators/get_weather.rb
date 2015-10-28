@@ -3,7 +3,7 @@ class Mediators::GetWeather < Mediators::Base
   attr_reader :service, :latlong, :date, :key, :response
 
   def initialize(args)
-    @service = args.fetch(:service, 'http://api.forecast.io/forecast')
+    @service = args.fetch(:service, 'https://api.forecast.io/forecast')
     @latlong = args.fetch(:latlong, [45.5200, -122.6819])
     @date    = args.fetch(:date,    Time.now.to_i)
     @key     = ENV["FORECAST"]
@@ -14,7 +14,7 @@ class Mediators::GetWeather < Mediators::Base
       self.request
       return self.response
     rescue => e
-      "A request to forcast.io failed #{e}"
+      "A request to forcast.io failed #{e.message}"
     end
   end
 

@@ -34,15 +34,15 @@ definitions:
   current:
     description: a jsonb string of current weather
     type:
-    - string
+    - object
   hourly:
     description: a jsonb array of hourly hash weather reports
     type:
-    - string
+    - object
   daily:
     description: a jsonb hash of a daily aggregation for the week
     type:
-    - string
+    - object
   longitude:
     description: longitude in degrees
     type:

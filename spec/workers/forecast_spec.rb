@@ -6,7 +6,7 @@ describe Workers::Forecast do
     stub_url = Mediators::GetWeather.new({}).request_url
 
     stub_request(:get, stub_url).
-      to_return(status: 200, body: '{}')
+      to_return(status: 200, body: File.open('../weather.json', 'r').read)
   end
 
   it 'Creates a new weather record in DB' do
