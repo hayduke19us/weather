@@ -6,7 +6,8 @@ var Locations = Router.Locations
 var Location = Router.Location
 
 var App = require('../components/layout/App.jsx');
-var WeatherLarge = require('../components/widgets/weather_large.jsx')
+var Login = require('../components/actions/login.jsx');
+var WeatherLarge = require('../components/widgets/weather_large.jsx');
 
 var NotFoundPage = React.createClass({
   render: function () {
@@ -22,7 +23,8 @@ module.exports = React.createClass({
   render: function() {
     return (
       <Locations>
-        <Location path="/" handler={App} />
+        <Location path="/" handler = {Login} />
+        <Location path="/dash" handler={App} />
         <Location path="/weather" handler={WeatherLarge} />
         <NotFound handler={NotFoundPage} />
       </Locations>

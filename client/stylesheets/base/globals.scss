@@ -1,7 +1,24 @@
-// Font Awesome
+
+.vcenter  {
+  margin-bottom: auto;
+  margin-top: 100px;
+
+}
+
 .center { text-align: center; }
-.large-icon { font-size: 60px; }
+
 .white {color: white;}
+
+// Icons
+.large-icon { 
+  font-size: 60px;
+  display: block;
+}
+.medium-icon { 
+  font-size: 44.875px;
+  display: block;
+
+}
 
 .chart rect {
   fill: $weather;
