@@ -22,16 +22,17 @@ describe Endpoints::Users do
 
   describe "POST" "/users" do
     it "returns a new user" do
-      post "/users", {email: 'hayduke@gmail.com', password: 'something'}
+      post "/users", email: 'hayduke@gmail.com', password: 'something'
       assert_equal 201, last_response.status
     end
   end
 
   describe "PATCH" "/users/:id" do
     it "returns an edited user" do
-      patch "/users/#{@user.id}", {email: 'petessausage@gmail.com'}
+      patch "/users/#{@user.id}", email: 'petessausage@gmail.com'
       assert_equal 200, last_response.status
       email = MultiJson.decode(last_response.body)['email']
+      puts email
       assert_equal 'petessausage@gmail.com', email
     end
   end

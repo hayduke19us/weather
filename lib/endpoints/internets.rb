@@ -18,7 +18,7 @@ module Endpoints
         encode serialize(internet)
       end
 
-      delete "/:id" do
+      delete "/:id" do |id|
         internet = Internet.find id: id
         internet.destroy
       end

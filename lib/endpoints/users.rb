@@ -11,13 +11,14 @@ module Endpoints
 
       get do
         status 200
-        encode serialize User.all
+        encode serialize(User.all)
       end
 
       post do
         status 201
         user = User.new(body_params)
         user.save
+        user
       end
 
       get "/:id" do |id|
@@ -26,7 +27,7 @@ module Endpoints
 
       patch "/:id" do |id|
         user = User.find id: id
-        user.update(body_params)
+        encode serialize(user.update(body_params))
       end
 
       delete "/:id" do |id|

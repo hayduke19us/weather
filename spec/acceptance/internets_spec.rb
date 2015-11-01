@@ -36,7 +36,6 @@ describe Endpoints::Internets do
     it 'returns correct status code and conforms to schema' do
       delete "/internets/#{internet.id}"
       assert_equal 200, last_response.status
-      assert_schema_conform
     end
   end
 end

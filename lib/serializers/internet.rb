@@ -9,7 +9,7 @@ class Serializers::Internet < Serializers::Base
       signal:     arg.signal,
       noise:      arg.noise,
       snr:        arg.snr,
-      signal_quality: arg.signal_quality,
+      signal_quality: arg.signal_quality.round(4),
       updated_at: arg.updated_at.try(:iso8601),
     }
   end

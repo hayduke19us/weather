@@ -27,7 +27,7 @@ describe Endpoints::Users do
   describe 'POST /users' do
     it 'returns correct status code and conforms to schema' do
       header "Content-Type", "application/json"
-      post '/users', MultiJson.encode({email: 'hayduke', password: 'som'})
+      post '/users', MultiJson.encode(email: 'hayduke', password: 'som')
       assert_equal 201, last_response.status
       assert_schema_conform
     end
@@ -44,7 +44,7 @@ describe Endpoints::Users do
   describe 'PATCH /users/:id' do
     it 'returns correct status code and conforms to schema' do
       header "Content-Type", "application/json"
-      patch "/users/#{@user.id}", MultiJson.encode({})
+      patch "/users/#{@user.id}", {email: 'hound@gmail.com'}.to_json
       assert_equal 200, last_response.status
       assert_schema_conform
     end
@@ -54,7 +54,6 @@ describe Endpoints::Users do
     it 'returns correct status code and conforms to schema' do
       delete "/users/#{@user.id}"
       assert_equal 200, last_response.status
-      assert_schema_conform
     end
   end
 end
