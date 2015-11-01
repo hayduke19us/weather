@@ -17,8 +17,7 @@ module Endpoints
       post do
         status 201
         user = User.new(body_params)
-        user.save
-        user
+        encode serialize(user.save)
       end
 
       get "/:id" do |id|
@@ -32,7 +31,7 @@ module Endpoints
 
       delete "/:id" do |id|
         user = User.find id: id
-        user.destroy
+        encode serialize(user.destroy)
       end
     end
   end
