@@ -44,7 +44,7 @@ module.exports = React.createClass({
       <div className='vextend' style={woodStyle}>
         <div className='container-fluid'>
           <div className='row'>
-            <div className='col-lg-4'>
+            <div className='col-xs-12 col-sm-6 col-md-4'>
               <div className={'widget ' + this.state.login_color + ' white vcenter'}>
                 <h1>Login</h1>
                 <h2>Email</h2>
@@ -54,7 +54,7 @@ module.exports = React.createClass({
                 <Link href='/dash'><h4>New? Sign up</h4></Link> 
               </div>
             </div>
-            <div className='col-lg-8 white'>
+            <div className='col-xs-12 col-sm-6 col-lg-8 white'>
               <div className='center vcenter'>
                 <image src='./notepaper.png' alt='No Image'/>
               </div>
@@ -63,7 +63,9 @@ module.exports = React.createClass({
         </div>
         <div id='footer'>
           <div className='container-fluid'>
-            <div style={paperBalls}></div>
+            <div className='visible-md-block visible-lg-block'>
+              <div style={paperBalls}></div>
+            </div>
           </div>
         </div>
       </div>
