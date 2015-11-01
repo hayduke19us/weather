@@ -1,6 +1,6 @@
 Routes = Rack::Builder.new do
   use Rollbar::Middleware::Sinatra
-  # I have to comment out this for react
+  # I have to comment this out for react
   # use Pliny::Middleware::CORS
   use Pliny::Middleware::RequestID
   use Pliny::Middleware::RescueErrors, raise: Config.raise_errors?
@@ -14,7 +14,9 @@ Routes = Rack::Builder.new do
   use Rack::SSL if Config.force_ssl?
 
   use Pliny::Router do
+    mount Endpoints::Users
     mount Endpoints::Weathers
+    mount Endpoints::Internets
   end
 
   # root app; but will also handle some defaults like 404

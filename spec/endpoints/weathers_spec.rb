@@ -10,30 +10,20 @@ describe Endpoints::Weathers do
     end
   end
 
-  describe "Post /weathers" do
-    it "succeeds" do
-      post "/weathers", {current: {temp: 60, rain: 'light', cloud: true}.to_json}
-      assert_equal 201, last_response.status
-      props = MultiJson.decode(Weather.last.current)
-      refute props.empty?
-    end
-  end
-
-  describe "Get /weathers/:id" do
+  describe "GET /weathers/:id" do
     it 'succeeds' do
       w = Weather.first.id
-      get "/weathers", id: w
+      get "/weathers/#{w}"
       assert_equal 200, last_response.status
     end
   end
 
-  describe "Patch /weathers/:id" do
-    it 'sucks' do
-      w = Weather.first
-      patch "/weathers/#{w.id}", current: {rain: 'light'}.to_json
-      we = Weather.find id: w.id
-      assert_equal 200, last_response.status
-      assert_equal 'light', JSON.parse(we.current)['rain']
+  describe "GET /weathers/daily/:limit" do
+    it 'returns a collection limited by params' do
+      get "/weathers/daily/3"
+      size = MultiJson.decode(last_response.body).count
+      assert_equal 3, size
     end
   end
+
 end

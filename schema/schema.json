@@ -68,34 +68,13 @@
           "description": "percentage of signal quality",
           "readOnly": true,
           "type": [
-            "float"
+            "number"
           ]
         },
         "identity": {
           "anyOf": [
             {
               "$ref": "#/definitions/internet/definitions/id"
-            },
-            {
-              "$ref": "#/definitions/internet/definitions/name"
-            },
-            {
-              "$ref": "#/definitions/internet/definitions/address"
-            },
-            {
-              "$ref": "#/definitions/internet/definitions/ip"
-            },
-            {
-              "$ref": "#/definitions/internet/definitions/signal"
-            },
-            {
-              "$ref": "#/definitions/internet/definitions/noise"
-            },
-            {
-              "$ref": "#/definitions/internet/definitions/snr"
-            },
-            {
-              "$ref": "#/definitions/internet/definitions/signal_quality"
             }
           ]
         },
@@ -116,20 +95,6 @@
       },
       "links": [
         {
-          "description": "Create a new internet.",
-          "href": "/internets",
-          "method": "POST",
-          "rel": "create",
-          "schema": {
-            "properties": {
-            },
-            "type": [
-              "object"
-            ]
-          },
-          "title": "Create"
-        },
-        {
           "description": "Delete an existing internet.",
           "href": "/internets/{(%23%2Fdefinitions%2Finternet%2Fdefinitions%2Fidentity)}",
           "method": "DELETE",
@@ -149,20 +114,6 @@
           "method": "GET",
           "rel": "instances",
           "title": "List"
-        },
-        {
-          "description": "Update an existing internet.",
-          "href": "/internets/{(%23%2Fdefinitions%2Finternet%2Fdefinitions%2Fidentity)}",
-          "method": "PATCH",
-          "rel": "update",
-          "schema": {
-            "properties": {
-            },
-            "type": [
-              "object"
-            ]
-          },
-          "title": "Update"
         }
       ],
       "properties": {
@@ -198,6 +149,127 @@
         }
       }
     },
+    "user": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "FIXME - User",
+      "description": "FIXME",
+      "stability": "prototype",
+      "strictProperties": true,
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "id": {
+          "description": "unique identifier of user",
+          "readOnly": true,
+          "format": "uuid",
+          "type": [
+            "string"
+          ]
+        },
+        "email": {
+          "description": "a unique email used for auth and user name",
+          "type": [
+            "string"
+          ]
+        },
+        "password": {
+          "description": "password encrypted",
+          "type": [
+            "string"
+          ]
+        },
+        "identity": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/user/definitions/id"
+            }
+          ]
+        },
+        "created_at": {
+          "description": "when user was created",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        },
+        "updated_at": {
+          "description": "when user was updated",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "links": [
+        {
+          "description": "Create a new user.",
+          "href": "/users",
+          "method": "POST",
+          "rel": "create",
+          "schema": {
+            "properties": {
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Create"
+        },
+        {
+          "description": "Delete an existing user.",
+          "href": "/users/{(%23%2Fdefinitions%2Fuser%2Fdefinitions%2Fidentity)}",
+          "method": "DELETE",
+          "rel": "destroy",
+          "title": "Delete"
+        },
+        {
+          "description": "Info for existing user.",
+          "href": "/users/{(%23%2Fdefinitions%2Fuser%2Fdefinitions%2Fidentity)}",
+          "method": "GET",
+          "rel": "self",
+          "title": "Info"
+        },
+        {
+          "description": "List existing users.",
+          "href": "/users",
+          "method": "GET",
+          "rel": "instances",
+          "title": "List"
+        },
+        {
+          "description": "Update an existing user.",
+          "href": "/users/{(%23%2Fdefinitions%2Fuser%2Fdefinitions%2Fidentity)}",
+          "method": "PATCH",
+          "rel": "update",
+          "schema": {
+            "properties": {
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Update"
+        }
+      ],
+      "properties": {
+        "created_at": {
+          "$ref": "#/definitions/user/definitions/created_at"
+        },
+        "id": {
+          "$ref": "#/definitions/user/definitions/id"
+        },
+        "email": {
+          "$ref": "#/definitions/user/definitions/email"
+        },
+        "password": {
+          "$ref": "#/definitions/user/definitions/password"
+        },
+        "updated_at": {
+          "$ref": "#/definitions/user/definitions/updated_at"
+        }
+      }
+    },
     "weather": {
       "$schema": "http://json-schema.org/draft-04/hyper-schema",
       "title": "Weather",
@@ -220,21 +292,6 @@
           "anyOf": [
             {
               "$ref": "#/definitions/weather/definitions/id"
-            },
-            {
-              "$ref": "#/definitions/weather/definitions/current"
-            },
-            {
-              "$ref": "#/definitions/weather/definitions/hourly"
-            },
-            {
-              "$ref": "#/definitions/weather/definitions/daily"
-            },
-            {
-              "$ref": "#/definitions/weather/definitions/longitude"
-            },
-            {
-              "$ref": "#/definitions/weather/definitions/latitude"
             }
           ]
         },
@@ -255,19 +312,19 @@
         "current": {
           "description": "a jsonb string of current weather",
           "type": [
-            "string"
+            "object"
           ]
         },
         "hourly": {
           "description": "a jsonb array of hourly hash weather reports",
           "type": [
-            "string"
+            "object"
           ]
         },
         "daily": {
           "description": "a jsonb hash of a daily aggregation for the week",
           "type": [
-            "string"
+            "object"
           ]
         },
         "longitude": {
@@ -284,20 +341,6 @@
         }
       },
       "links": [
-        {
-          "description": "Create a new weather.",
-          "href": "/weathers",
-          "method": "POST",
-          "rel": "create",
-          "schema": {
-            "properties": {
-            },
-            "type": [
-              "object"
-            ]
-          },
-          "title": "Create"
-        },
         {
           "description": "Delete an existing weather.",
           "href": "/weathers/{(%23%2Fdefinitions%2Fweather%2Fdefinitions%2Fidentity)}",
@@ -318,20 +361,6 @@
           "method": "GET",
           "rel": "instances",
           "title": "List"
-        },
-        {
-          "description": "Update an existing weather.",
-          "href": "/weathers/{(%23%2Fdefinitions%2Fweather%2Fdefinitions%2Fidentity)}",
-          "method": "PATCH",
-          "rel": "update",
-          "schema": {
-            "properties": {
-            },
-            "type": [
-              "object"
-            ]
-          },
-          "title": "Update"
         },
         {
           "description": "Get the current weather.",
@@ -379,6 +408,9 @@
   "properties": {
     "internet": {
       "$ref": "#/definitions/internet"
+    },
+    "user": {
+      "$ref": "#/definitions/user"
     },
     "weather": {
       "$ref": "#/definitions/weather"

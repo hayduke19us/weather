@@ -6,8 +6,10 @@ module Endpoints
         content_type :json, charset: 'utf-8'
 
         if Config.pliny_env =~ /\A(development|test)/
-          response.headers['Access-Control-Allow-Origin'] = 'http://localhost:8080'
+          url = 'http://localhost:8080'
+          response.headers['Access-Control-Allow-Origin'] = url
         end
+
       end
 
       def serialize data, structure = :default
@@ -21,7 +23,6 @@ module Endpoints
 
       get "/daily/:limit" do |limit|
         status 200
-        puts limit
         encode Weather.daily(limit)
       end
 
@@ -30,24 +31,13 @@ module Endpoints
         encode serialize(Weather.all)
       end
 
-      post do
-        status 201
-        encode serialize(Weather.create(params))
-      end
-
       get "/:id" do |id|
         encode serialize(Weather.find id: id)
       end
 
-      patch "/:id" do |id|
-        status 200
-        w = Weather.find id: id
-        w.update body_params
-        encode serialize w
-      end
-
-      delete "/:id" do
-        encode Hash.new
+      delete "/:id" do |id|
+        weather = Weather.find(id: id)
+        weather.destroy
       end
     end
 

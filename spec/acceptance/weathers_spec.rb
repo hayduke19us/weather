@@ -14,36 +14,16 @@ describe Endpoints::Weathers do
 
   describe 'GET /weathers' do
     it 'returns correct status code and conforms to schema' do
-      puts Config.pliny_env
       get '/weathers'
       assert_equal 200, last_response.status
       assert_schema_conform
     end
   end
 
-  describe 'POST /weathers' do
-    it 'returns correct status code and conforms to schema' do
-      header "Content-Type", "application/json"
-      post '/weathers', {}
-      assert_equal 201, last_response.status
-      assert_schema_conform
-    end
-  end
-
   describe 'GET /weathers/:id' do
     it 'returns correct status code and conforms to schema' do
-      id = Weather.first.id
+      id = Weather.last.id
       get "/weathers/#{id}"
-      assert_equal 200, last_response.status
-      assert_schema_conform
-    end
-  end
-
-  describe 'PATCH /weathers/:id' do
-    it 'returns correct status code and conforms to schema' do
-      w = Weather.create()
-      header "Content-Type", "application/json"
-      patch "/weathers/#{w.id}", '{}'
       assert_equal 200, last_response.status
       assert_schema_conform
     end

@@ -5,25 +5,22 @@ module Endpoints
         content_type :json, charset: 'utf-8'
       end
 
+      def serialize data, structure = :default
+        Serializers::Internet.new(structure).serialize(data)
+      end
+
       get do
-        encode []
+        encode serialize(Internet.all)
       end
 
-      post do
-        status 201
-        encode Hash.new
-      end
-
-      get "/:id" do
-        encode Hash.new
-      end
-
-      patch "/:id" do
-        encode Hash.new
+      get "/:id" do |id|
+        internet = Internet.find id: id
+        encode serialize(internet)
       end
 
       delete "/:id" do
-        encode Hash.new
+        internet = Internet.find id: id
+        internet.destroy
       end
     end
   end

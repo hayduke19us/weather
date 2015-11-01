@@ -44,8 +44,6 @@ def rand_ip
   [rand(200), rand(200), rand(200), rand(200)].join('.')
 end
 
-
-
 def create_weathers
   reset_count
 
@@ -82,9 +80,16 @@ def rnd_bool
   bools[rand(0..1)]
 end
 
+def create_users
+  rand_names.each do |person|
+    id = _DB[:users].insert(email: "#{person}@gmail.com", password: SecureRandom.hex)
+    print_message 'User', id
+  end
+end
+
 def print_message klass, id=nil
   if id
-    puts success_message klass
+    # puts success_message klass
   else
     puts falure_message klass
   end
@@ -104,4 +109,5 @@ end
 
 create_weathers
 create_internets
+create_users
 _DB.disconnect

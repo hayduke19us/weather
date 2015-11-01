@@ -10,6 +10,5 @@ module Clockwork
     end
   end
 
-  a = AppEnv.new
-  every(1.hour, 'frequent.forecast') if a.pro?
+  every(1.hour, 'frequent.forecast') if AppEnv.pro?
 end

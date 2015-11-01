@@ -16,11 +16,6 @@ definitions:
   identity:
     anyOf:
     - "$ref": "/schemata/weather#/definitions/id"
-    - "$ref": "/schemata/weather#/definitions/current"
-    - "$ref": "/schemata/weather#/definitions/hourly"
-    - "$ref": "/schemata/weather#/definitions/daily"
-    - "$ref": "/schemata/weather#/definitions/longitude"
-    - "$ref": "/schemata/weather#/definitions/latitude"
   created_at:
     description: when weather was created
     format: date-time
@@ -52,15 +47,6 @@ definitions:
     type:
     - number
 links:
-- description: Create a new weather.
-  href: "/weathers"
-  method: POST
-  rel: create
-  schema:
-    properties: {}
-    type:
-    - object
-  title: Create
 - description: Delete an existing weather.
   href: "/weathers/{(%2Fschemata%2Fweather%23%2Fdefinitions%2Fidentity)}"
   method: DELETE
@@ -76,15 +62,6 @@ links:
   method: GET
   rel: instances
   title: List
-- description: Update an existing weather.
-  href: "/weathers/{(%2Fschemata%2Fweather%23%2Fdefinitions%2Fidentity)}"
-  method: PATCH
-  rel: update
-  schema:
-    properties: {}
-    type:
-    - object
-  title: Update
 - description: Get the current weather.
   href: "/weathers/{(%2Fschemata%2Fweather%23%2Fdefinitions%2Fidentity)}"
   method: GET
@@ -95,7 +72,6 @@ links:
   method: GET
   rel: instances
   title: Daily weather
-
 properties:
   created_at:
     "$ref": "/schemata/weather#/definitions/created_at"

@@ -21,6 +21,11 @@ module Endpoints
       also_reload '../**/*.rb'
     end
 
+    configure do
+      set :sessions, true
+    end
+
+    # For the preflight request
     options '/*' do
       if Config.pliny_env =~ /\A(development|test)/
 
@@ -28,10 +33,9 @@ module Endpoints
         response.headers["Access-Control-Allow-Methods"] = "GET"
         response.headers["Access-Control-Allow-Headers"] = "X-Requested-With, Content-Type"
 
-      200
+        200
       end
     end
-
 
     error Sinatra::NotFound do
       raise Pliny::Errors::NotFound

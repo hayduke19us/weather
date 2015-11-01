@@ -47,17 +47,10 @@ definitions:
     description: percentage of signal quality 
     readOnly: true
     type:
-    - float
+    - number
   identity:
     anyOf:
     - "$ref": "/schemata/internet#/definitions/id"
-    - "$ref": "/schemata/internet#/definitions/name"
-    - "$ref": "/schemata/internet#/definitions/address"
-    - "$ref": "/schemata/internet#/definitions/ip"
-    - "$ref": "/schemata/internet#/definitions/signal"
-    - "$ref": "/schemata/internet#/definitions/noise"
-    - "$ref": "/schemata/internet#/definitions/snr"
-    - "$ref": "/schemata/internet#/definitions/signal_quality"
   created_at:
     description: when internet was created
     format: date-time
@@ -69,15 +62,6 @@ definitions:
     type:
     - string
 links:
-- description: Create a new internet.
-  href: "/internets"
-  method: POST
-  rel: create
-  schema:
-    properties: {}
-    type:
-    - object
-  title: Create
 - description: Delete an existing internet.
   href: "/internets/{(%2Fschemata%2Finternet%23%2Fdefinitions%2Fidentity)}"
   method: DELETE
@@ -93,15 +77,6 @@ links:
   method: GET
   rel: instances
   title: List
-- description: Update an existing internet.
-  href: "/internets/{(%2Fschemata%2Finternet%23%2Fdefinitions%2Fidentity)}"
-  method: PATCH
-  rel: update
-  schema:
-    properties: {}
-    type:
-    - object
-  title: Update
 properties:
   created_at:
     "$ref": "/schemata/internet#/definitions/created_at"

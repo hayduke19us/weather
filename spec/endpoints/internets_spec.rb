@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe Endpoints::Internets do
-  include Rack::Test::Methods
+ include Rack::Test::Methods
 
   describe "GET /internets" do
     it "succeeds" do

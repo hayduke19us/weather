@@ -41,9 +41,9 @@ module WeatherMan
         end
 
         ws.on :close do |event|
-            p [:close, ws.object_id, event.code, event.reason]
-              @clients.delete(ws)
-                ws = nil
+          p [:close, ws.object_id, event.code, event.reason]
+          @clients.delete(ws)
+          ws = nil
         end
 
         ws.rack_response
