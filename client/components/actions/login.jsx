@@ -6,11 +6,14 @@ var Icons = require('../layout/icons.jsx')
 module.exports = React.createClass({
 
   getInitialState: function () {
-    return { login_color: 'lights' }
+    return { login_color: 'lights', time_interval: '' }
   },
 
   change_login_background: function () {
-    setInterval(this.change_color, 5000)
+    var colorChange = setInterval(this.change_color, 5000)
+    this.setState({
+      time_interval: colorChange 
+    })
   },
 
   change_color: function () {
@@ -25,6 +28,10 @@ module.exports = React.createClass({
     if (this.isMounted()) {
       this.change_login_background()
     }
+  },
+
+  componentWillUnmount: function () {
+    clearInterval(this.state.time_interval)
   },
 
   render: function(){

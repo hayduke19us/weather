@@ -1,7 +1,9 @@
+require 'authentication.rb'
 module Endpoints
 
   # The base class for all Sinatra-based endpoints. Use sparingly.
   class Base < Sinatra::Base
+    include Authentication
 
     register Pliny::Extensions::Instruments
     register Sinatra::Namespace
@@ -24,6 +26,7 @@ module Endpoints
     configure do
       set :sessions, true
     end
+
 
     # For the preflight request
     options '/*' do

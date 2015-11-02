@@ -23,6 +23,7 @@ gem "rest-client"
 gem "colorize"
 gem "haml"
 gem "faye-websocket"
+gem "bcrypt"
 
 group :development, :test do
   gem "pry-byebug"

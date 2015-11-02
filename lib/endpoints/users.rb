@@ -9,6 +9,17 @@ module Endpoints
         Serializers::User.new(structure).serialize(data)
       end
 
+      get '/sign_in' do
+        user = User.authenticate params
+        if user
+          session[:user_id] = user.id
+          user
+        end
+      end
+
+      post 'sign_up' do
+      end
+
       get do
         status 200
         encode serialize(User.all)

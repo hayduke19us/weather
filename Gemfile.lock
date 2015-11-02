@@ -11,6 +11,7 @@ GEM
     assert_difference (1.0.0)
       activesupport (>= 3.0.0)
     backports (3.6.6)
+    bcrypt (3.1.10)
     byebug (5.0.0)
       columnize (= 0.9.0)
     celluloid (0.16.0)
@@ -162,6 +163,7 @@ PLATFORMS
 
 DEPENDENCIES
   assert_difference
+  bcrypt
   byebug
   clockwork
   colorize

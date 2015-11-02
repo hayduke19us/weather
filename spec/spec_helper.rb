@@ -1,4 +1,6 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+# We are stubbing all request with webmock, and are storing mocked json
+# responses in files titles by there table name like spec/weather.json
 
 ENV["RACK_ENV"] = "test"
 

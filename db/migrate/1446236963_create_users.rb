@@ -5,7 +5,7 @@ Sequel.migration do
       timestamptz  :created_at, default: Sequel.function(:now), null: false
       timestamptz  :updated_at, default: Sequel.function(:now), null: false
       String       :email, null: false
-      String       :password, null: false
+      String       :password 
     end
   end
 end

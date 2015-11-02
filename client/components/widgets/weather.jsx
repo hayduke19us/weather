@@ -29,11 +29,7 @@ module.exports = React.createClass({
   componentDidMount: function() {
     if (this.isMounted()) {
       this.getWeather(this)
-      this.getWeatherState()
     }
-  },
-
-  getWeatherState: function(){
   },
 
   getWeather: function(self) {
