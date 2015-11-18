@@ -1,4 +1,4 @@
-require 'authentication.rb'
+require './lib/authentication.rb'
 module Endpoints
 
   # The base class for all Sinatra-based endpoints. Use sparingly.
@@ -22,11 +22,6 @@ module Endpoints
       register Sinatra::Reloader
       also_reload '../**/*.rb'
     end
-
-    configure do
-      set :sessions, true
-    end
-
 
     # For the preflight request
     options '/*' do

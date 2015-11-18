@@ -70,4 +70,12 @@ RSpec.configure do |config|
   def app
     @rack_app || fail("Missing @rack_app")
   end
+
 end
+
+def current_user
+  session = last_request.env['rack.session']
+  @current_user ||= User.find id: session[:user_id]
+end
+
+

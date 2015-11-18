@@ -120,6 +120,8 @@ GEM
       json (~> 1.0)
       redis (~> 3.2, >= 3.2.1)
       redis-namespace (~> 1.5, >= 1.5.2)
+    simple_session (0.3.3)
+      rack
     simplecov (0.10.0)
       docile (~> 1.1.0)
       json (~> 1.8)
@@ -189,6 +191,7 @@ DEPENDENCIES
   sequel-paranoid
   sequel_pg (~> 1.6)
   sidekiq
+  simple_session (~> 0.3.3)
   simplecov
   sinatra (~> 1.4)
   sinatra-contrib

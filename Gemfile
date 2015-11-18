@@ -24,6 +24,7 @@ gem "colorize"
 gem "haml"
 gem "faye-websocket"
 gem "bcrypt"
+gem 'simple_session', '~> 0.3.3'
 
 group :development, :test do
   gem "pry-byebug"

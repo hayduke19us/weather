@@ -9,10 +9,10 @@ require "pliny/config_helpers"
 module Config
   extend Pliny::CastingConfigHelpers
 
-
   # Mandatory -- exception is raised for these variables when missing.
   mandatory :database_url, string
   mandatory :forecast, string
+  mandatory :cookie_secret, string
 
   # Optional -- value is returned or `nil` if it wasn't present.
   optional :placeholder,         string

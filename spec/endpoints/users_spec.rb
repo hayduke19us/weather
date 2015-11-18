@@ -2,7 +2,7 @@ require "spec_helper"
 require "authentication.rb"
 
 describe Endpoints::Users do
-  include Authentication
+  include Authentication::Test
   include Rack::Test::Methods
 
   before do
@@ -11,6 +11,7 @@ describe Endpoints::Users do
 
   describe "GET /users" do
     it "succeeds" do
+      # get '/users/sign_in', password: 'password', email: @user.email
       get "/users"
       assert_equal 200, last_response.status
     end
@@ -35,16 +36,16 @@ describe Endpoints::Users do
       patch "/users/#{@user.id}", email: 'petessausage@gmail.com'
       assert_equal 200, last_response.status
       email = MultiJson.decode(last_response.body)['email']
-      puts email
       assert_equal 'petessausage@gmail.com', email
     end
   end
 
   describe "DELETE /users/:id" do
     it "deletes a user" do
-      assert_difference 'User.count', -1 do
-        delete "/users/#{@user.id}"
-      end
+      get '/users'
+      get '/users'
+      assert_equal 1, last_request
+      #delete "/users/#{@user.id}"
     end
   end
 
@@ -61,4 +62,20 @@ describe Endpoints::Users do
       assert current_user
     end
   end
+
+  describe "Post /users/sign_up" do
+    it "creates a new user and requires a password confirmation" do
+      hash = {
+        email: 'someemail@gmail.com',
+        password: 'password',
+        password_confirm: 'password'
+      }
+
+      post '/users/sign_up', hash
+
+      assert last_response.ok?
+      assert current_user
+    end
+  end
+
 end

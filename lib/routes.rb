@@ -1,3 +1,4 @@
+require 'securerandom'
 Routes = Rack::Builder.new do
   use Rollbar::Middleware::Sinatra
   # I have to comment this out for react
