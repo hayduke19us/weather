@@ -18,6 +18,7 @@ describe Workers::Forecast do
   end
 
   it 'Prints an output with the time and id of weather record' do
+    skip
     assert_output(/created/) do
       Workers::Forecast.perform
     end

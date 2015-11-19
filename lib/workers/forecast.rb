@@ -19,7 +19,7 @@ module Workers
     end
 
     def self.print_message msg
-      puts msg
+      puts msg unless Config.rack_env == 'test'
     end
 
   end
