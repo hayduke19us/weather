@@ -5,13 +5,17 @@ describe Endpoints::Users do
   include Authentication::Test
   include Rack::Test::Methods
 
+  def app
+    Routes
+  end
+
   before do
     @user = User.create(email: 'email@gmail.com', password: 'password')
+    get '/users/sign_in', email: @user.email, password: 'password'
   end
 
   describe "GET /users" do
     it "succeeds" do
-      # get '/users/sign_in', password: 'password', email: @user.email
       get "/users"
       assert_equal 200, last_response.status
     end
@@ -42,23 +46,20 @@ describe Endpoints::Users do
 
   describe "DELETE /users/:id" do
     it "deletes a user" do
-      get '/users'
-      get '/users'
-      assert_equal 1, last_request
-      #delete "/users/#{@user.id}"
+      assert current_user
+      assert_difference 'User.count', -1 do
+        delete "/users/#{@user.id}"
+      end
     end
   end
 
   describe "GET /users/sign_in" do
     it "creates a session for a user" do
-      get '/users/sign_in', email: @user.email, password: 'password'
-
       session = last_request.env['rack.session']
       assert_equal User.by_email(@user.email).id, session[:user_id]
     end
 
     it 'assigns a current user' do
-      get '/users/sign_in', email: @user.email, password: 'password'
       assert current_user
     end
   end

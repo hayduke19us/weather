@@ -1,9 +1,13 @@
 module Endpoints
   class Users < Base
 
+    EXCEPT = ['/users/sign_up', '/users/sign_in']
+
     namespace "/users" do
+
       before do
         content_type :json, charset: 'utf-8'
+        authenticate! unless EXCEPT.include?(request.path)
       end
 
       def serialize data, structure = :default
@@ -29,13 +33,7 @@ module Endpoints
       end
 
       get do
-        if session 
-          session
-        else
-          'NO SESSION'
-        end
-        # status 200
-        # encode serialize(User.all)
+        encode serialize(User.all)
       end
 
       post do

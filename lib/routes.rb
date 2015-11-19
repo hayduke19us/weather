@@ -1,5 +1,5 @@
-require 'securerandom'
 Routes = Rack::Builder.new do
+  use SimpleSession::Session, secret: Config.cookie_secret, max_age: 20
   use Rollbar::Middleware::Sinatra
   # I have to comment this out for react
   # use Pliny::Middleware::CORS

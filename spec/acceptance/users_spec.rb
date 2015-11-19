@@ -3,6 +3,7 @@ require "spec_helper"
 describe Endpoints::Users do
   include Committee::Test::Methods
   include Rack::Test::Methods
+  include Authentication::Test
 
   def app
     Routes
@@ -13,7 +14,8 @@ describe Endpoints::Users do
   end
 
   before do
-    @user ||= User.first
+    @user = User.create(email: 'email@gmail.com', password: 'password')
+    get '/users/sign_in', email: @user.email, password: 'password'
   end
 
   describe 'GET /users' do
